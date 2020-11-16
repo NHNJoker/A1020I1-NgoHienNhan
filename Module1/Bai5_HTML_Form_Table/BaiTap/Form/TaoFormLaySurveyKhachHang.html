@@ -7,6 +7,7 @@
 <body>
 <h1>Khảo sát nghiên cứu thị trường</h1>
 <p style="font-size: 14px">Vui lòng dành một vài phút để hoàn thành khảo sát về mức độ hài lòng này.</p>
+<hr>
 <form action="TaoFormLaySurveyKhachHang.html" name="surveykhachhang" style="height:10%">
     <h3>Độ tuổi của bạn là bao nhiêu?</h3>
     <select style="width: 794.78px" name="age">
@@ -26,7 +27,7 @@
     <label><input type="radio" name="gender" value="male">Nam </label><br>
     <label><input type="radio" name="gender" value="female">Nữ </label><br>
     <label><input type="radio" name="gender" value="other">Khác </label><br>
-    <input type="text" name="sexOther">
+    <input type="text" name="genderOther">
     <h3>Bạn đã sử dụng những sản phẩm nào trong 2 tháng qua. Vui lòng chọn tất cả nếu đã sử dụng tất cả.</h3>
     <label><input name="product" type="checkbox" value="product1">Sản phẩm 1</label><br>
     <label><input name="product" type="checkbox" value="product2">Sản phẩm 2</label><br>
@@ -35,6 +36,10 @@
     <label><input name="time" type="radio" value="daily">Mỗi ngày</label><br>
     <label><input name="time" type="radio" value="weekly">Mỗi tuần</label><br>
     <label><input name="time" type="radio" value="monthly">Mỗi tháng</label><br>
+    <h3>Bạn muốn mua sản phẩm mới giá bao nhiêu?</h3>
+    <label>$</label>
+    <label><input name="dolar" type="number" style="width: 60px">.</label>
+    <label><input name="cent" type="number" style="width: 30px"> </label>
 </form>
 </body>
 </html>

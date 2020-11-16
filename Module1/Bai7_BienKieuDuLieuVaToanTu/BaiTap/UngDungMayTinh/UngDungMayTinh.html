@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính</title>
+</head>
+<body>
+    <h2>Caculator</h2>
+    <form>
+        <input id="num1" type="number" name="num1" style="width: 200px">
+        <label><input id="num2" type="number" name="num2" style="width: 200px"></label>
+        <br><br>
+        <button onclick="add();" type="button" style="width: 110px">Addition(+)</button>
+        <label><button onclick="sub();" type="button" style="width: 110px">Subtraction(-)</button></label>
+        <label><button onclick="multi();" type="button" style="width: 110px">Multiplication(X)</button></label>
+        <label><button onclick="div();" type="button" style="width: 110px">Division(/)</button></label>
+    </form>
+    <script language="JavaScript">
+        function add() {
+            var a = parseInt(document.getElementById('num1').value);
+            var b = parseInt(document.getElementById('num2').value);
+            var c;
+            c = a + b;
+            document.write(c);
+        }
+        function sub() {
+            var a = parseInt(document.getElementById('num1').value);
+            var b = parseInt(document.getElementById('num2').value);
+            var c;
+            c = a - b;
+            document.write(c);
+        }
+        function multi() {
+            var a = parseInt(document.getElementById('num1').value);
+            var b = parseInt(document.getElementById('num2').value);
+            var c;
+            c = a * b;
+            document.write(c);
+        }
+        function div() {
+            var a = parseInt(document.getElementById('num1').value);
+            var b = parseInt(document.getElementById('num2').value);
+            var c;
+            c = a / b;
+            document.write(c);
+        }
+    </script>
+</body>
+</html>

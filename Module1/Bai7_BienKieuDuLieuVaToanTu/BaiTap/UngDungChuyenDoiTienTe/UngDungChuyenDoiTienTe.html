@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<body>
+<table style="width: 100%">
+    <tr style="text-align: center">
+        <th>Amount</th>
+        <th>From Currency</th>
+        <th>To Curency</th>
+        <th></th>
+    </tr>
+    <tr style="text-align: center">
+        <td>
+            <input id="amount" oninput="kiemTra();" type="text" name="amount1">
+        </td>
+        <td>
+            <select id="fCurrency">
+                <option name="currency" value="vn">VietNam</option>
+                <option name="currency" value="usd">USD</option>
+            </select>
+        </td>
+        <td>
+            <select id="tCurrency">
+                <option name="currency" value="usd">USD</option>
+                <option name="currency" value="vn">VietNam</option>
+            </select>
+        </td>
+        <td>
+            <button onclick="ketQua();" style="background: blue;color: white;height: 30px;width: 70px" type="button">
+                Convert
+            </button>
+        </td>
+    </tr>
+</table>
+<br>
+<script language="JavaScript">
+    function kiemTra() {
+        var y = document.getElementById('amount').value;
+        if (isNaN(y)) {
+            document.getElementById('amount').style.color = "red";
+        } else {
+            document.getElementById('amount').style.color = "green";
+        }
+    }
+    function ketQua() {
+        var a = parseInt(document.getElementById('amount').value);
+        alert(a);
+        var b = document.getElementById('fCurrency').value;
+        var c = document.getElementById('tCurrency').value;
+        var r;
+        if (b === "vn" && c === "usd") {
+            r = a / 23000;
+        }else{
+            if(b=== "usd" && c === "vn"){
+                r = a*23000;
+            }else {
+                alert("Vui lòng chọn lại đơn vị tiền tệ.");
+                return;
+            }
+        }
+        document.write(r);
+    }
+</script>
+</body>
+</html>
