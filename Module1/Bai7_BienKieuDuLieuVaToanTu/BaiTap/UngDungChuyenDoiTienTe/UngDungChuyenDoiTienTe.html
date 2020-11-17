@@ -35,22 +35,27 @@
         </td>
     </tr>
 </table>
+<label><p id="hienThi" style="color: blue"></p><span></span></label>
 <br>
 <script language="JavaScript">
     function kiemTra() {
-        var y = document.getElementById('amount').value;
-        if (isNaN(y)) {
+        let y = document.getElementById('amount').value;
+        if (isNaN(y) || y<0) {
             document.getElementById('amount').style.color = "red";
+            alert("Không được nhập chữ hoặc số âm!!");
         } else {
             document.getElementById('amount').style.color = "green";
         }
     }
     function ketQua() {
-        var a = parseInt(document.getElementById('amount').value);
+        let a = parseInt(document.getElementById('amount').value);
         alert(a);
-        var b = document.getElementById('fCurrency').value;
-        var c = document.getElementById('tCurrency').value;
-        var r;
+        let b = document.getElementById('fCurrency').value;
+        let c = document.getElementById('tCurrency').value;
+        let r;
+        if (isNaN(a) || a<0){
+            alert('Không được nhập chữ hoặc số âm');
+        }
         if (b === "vn" && c === "usd") {
             r = a / 23000;
         }else{
@@ -58,10 +63,9 @@
                 r = a*23000;
             }else {
                 alert("Vui lòng chọn lại đơn vị tiền tệ.");
-                return;
             }
         }
-        document.write(r);
+        document.getElementById("hienThi").innerHTML = r;
     }
 </script>
 </body>
