@@ -1,0 +1,12 @@
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    width: 600px;
+    height : 150px;
+    box-shadow: black 2px 3px 3px;
+}

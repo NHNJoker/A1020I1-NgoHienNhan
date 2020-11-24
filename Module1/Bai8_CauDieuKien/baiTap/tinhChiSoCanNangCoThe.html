@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉ số cân nặng cơ thể</title>
+</head>
+<body>
+<table style="width: 100%;text-align: center">
+    <tr>
+        <th>Cân nặng(Kg) :</th>
+        <th>Chiều cao(m):</th>
+        <th>Chỉ số BMI</th>
+    </tr>
+    <tr>
+        <td><input type="number" id="weight" name="canNang"></td>
+        <td><input type="number" id="height" name="chieuCao"></td>
+        <td><input type="number" id="bmi" name="bmi"></td>
+    </tr>
+    <br>
+    <tr>
+        <td>
+            <button type="button" onclick="hienThi();">Tính chỉ số</button>
+        </td>
+    </tr>
+</table>
+<p id="ketQua" style="color: blue"></p>
+<script>
+    function hienThi() {
+        let a = parseFloat(document.getElementById('weight').value);
+        let b = parseFloat(document.getElementById('height').value);
+        console.log(a);
+        console.log(b);
+        let bmi = a / (b ^ 2);
+        document.getElementById('bmi').value = bmi;
+        if (bmi < 18)
+            document.getElementById('ketQua').innerText = 'Underweight';
+        else if (bmi < 25.0)
+            document.getElementById('ketQua').innerText = 'Normal';
+        else if (bmi < 30.0)
+            document.getElementById('ketQua').innerText = 'Overweight';
+        else
+            document.getElementById('ketQua').innerText = 'Obese';
+    }
+</script>
+</body>
+</html>
