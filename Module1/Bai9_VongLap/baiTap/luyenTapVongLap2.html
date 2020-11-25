@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vòng lặp 2</title>
+</head>
+<body>
+<p><b>Bài 1:</b>In dãy Finonaci</p>
+<input id="bai1" value="Thực Hiện" type="button" onclick="thucHien1()">
+<p id="ketQua1"></p>
+<hr>
+<p><b>Bài 2:</b>Tính giai thừa của một số nguyên dương</p>
+<input id="bai2" value="Thực Hiện" type="button" onclick="thucHien2()">
+<p id="ketQua2"></p>
+<hr>
+<p><b>Bài 3:</b>In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau</p>
+<input id="bai3" value="Thực Hiện" type="button" onclick="thucHien3()">
+<p id="ketQua3"></p>
+<hr>
+<p><b>Bài 4:</b>In hình chữ nhật</p>
+<input id="bai4" value="Thực Hiện" type="button" onclick="thucHien4()">
+<p id="ketQua4"></p>
+<hr>
+<p><b>Bài 5:</b>Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và
+    lãi xuất hàng tháng.</p>
+<input id="bai5" value="Thực Hiện" type="button" onclick="thucHien5()">
+<p id="ketQua5"></p>
+<hr>
+<script>
+    function thucHien1() {
+        let a = 0;
+        let b = 1;
+        let ketQua = "" + a;
+        let i = 1;
+        document.getElementById('ketQua1').innerText = a;
+        do {
+            ketQua += "," + b;
+            document.getElementById('ketQua1').innerText = ketQua;
+            let c = a + b;
+            a = b;
+            b = c;
+            i++;
+        } while (i <= 100)
+    }
+
+    function thucHien2() {
+        let a = 1;
+        let b = 1;
+        let num = parseInt(prompt("Nhập số nguyên dương cần tính giai thừa:"));
+        let i = 1;
+        while (i <= num) {
+            let c = a * b;
+            document.getElementById('ketQua2').innerText = c;
+            a = c;
+            i++;
+            b = i;
+        }
+    }
+
+    function thucHien3() {
+        let num = parseInt(prompt("Nhập số lượng tam giác muốn hiển thị:"));
+        let i = 1;
+        let z = 1;
+        let ketQua = '';
+        while (z <= num) {
+            while (i <= 5) {
+                for (let j = 1; j <= i; j++) {
+                    ketQua += "*";
+                }
+                ketQua += "<br/>";
+                i++;
+            }
+            let x = Math.round(Math.random() * innerWidth);
+            let y = Math.round(Math.random() * innerHeight);
+            document.getElementById('ketQua3').style.left = x + 'px';
+            document.getElementById('ketQua3').style.right = y + 'px';
+            document.getElementById('ketQua3').innerHTML = ketQua;
+            z++;
+        }
+    }
+
+    function thucHien4() {
+        let h = parseInt(prompt('Nhập chiều dài hình chữ nhật:'));
+        let w = parseInt(prompt('Nhập chiều rộng hình chữ nhật:'));
+        let i = 1;
+        let ketQua = '';
+        for (let i = 0; i <= h; i++) {
+            for (let j = 0; j <= w; j++) {
+                if (i === 0 || i === h) {
+                    ketQua += '*';
+                } else {
+                    if (j === 0 || j === w) {
+                        ketQua += '*';
+                    } else {
+                        ketQua += '&nbsp&nbsp;';
+                    }
+                }
+
+            }
+            ketQua += '<br/>'
+        }
+        document.getElementById('ketQua4').innerHTML = ketQua;
+    }
+
+    function thucHien5() {
+        let m = parseFloat(prompt("Nhập vào thời gian vay:"));
+        let amount = parseFloat(prompt("Nhập vào số tiền vay:"));
+        let interest = parseFloat(prompt("Nhập vào lãi suất ngân hàng (ví dụ : lãi suất 10 % thì nhập vào là 10:")) / 100;
+        let i = 1;
+        while (i <= m) {
+            amount = amount + amount * interest;
+            document.getElementById('ketQua5').innerText = amount;
+            i++;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lặp 1</title>
+</head>
+<body>
+<p><b>Bài 1:</b>Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo là đã hoàn thành.</p>
+<input type="button" id="ketQua1" onclick="thucHien1();" value="Thực Hiện">
+<hr>
+<p><b>Bài 2:</b>Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập. Nếu nhiệt độ nhập
+    vào trên 100, yêu cầu người dùng giảm nhiệt độ. Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.</p>
+<input type="button" id="ketQua2" onclick="thucHien2();" value="Thực Hiện">
+<hr>
+<p><b>Bài 3:</b>Hiển thị ra 20 số trong dãy fibonacci đầu tiên.</p>
+<input type="button" id="ketQua3" onclick="thucHien3();" value="Thực Hiện">
+<p id="fibonacci"></p>
+<hr>
+<p><b>Bài 4:</b>Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.</p>
+<input type="button" id="ketQua4" onclick="thucHien4();" value="Thực Hiện">
+<p id="bai4"></p>
+<hr>
+<p><b>Bài 5:</b>Tính tổng của 20 số đầu tiên trong dãy fibonacci.</p>
+<input type="button" id="ketQua5" onclick="thucHien5();" value="Thực Hiện">
+<p id="bai5"></p>
+<hr>
+<p><b>Bài 6:</b>Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên..</p>
+<input type="button" id="ketQua6" onclick="thucHien6();" value="Thực Hiện">
+<p id="bai6"></p>
+<hr>
+<p><b>Bài 7:</b>Hãy viết một chương trình in ra các số từ 1 đến 100. Nhưng nếu số chia hết cho 3 thì in ra "Fizz", 5 thì
+    in ra "Buzz" thay vì in ra số đó. Và nếu số đó chia hết cho cả 3 và 5 thì in ra chữ "FizzBuzz".</p>
+<input type="button" id="ketQua7" onclick="thucHien7();" value="Thực Hiện">
+<p id="bai7"></p>
+<hr>
+<p><b>Bài 8:</b>Game đoán số</p>
+<input type="button" id="ketQua8" onclick="thucHien8();" value="Chơi">
+<p id="bai8"></p>
+<hr>
+<script>
+    function thucHien1() {
+        for (let i = 1; i < 100; i++) {
+            console.log(i);
+            if (i === 99) {
+                alert("Hoàn Thành");
+                break;
+            }
+        }
+    }
+
+    function thucHien2() {
+        let a = parseInt(prompt("Nhập vào nhiệt độ hiện tại:"));
+        if (a > 100) {
+            while (a > 100) {
+                a = parseInt(prompt("Vui lòng giảm nhiệt độ:"));
+            }
+        }
+        if (a < 20) {
+            while (a < 20) {
+                a = parseInt(prompt("Vui lòng tăng nhiệt độ:"));
+            }
+        }
+    }
+
+    function thucHien3() {
+        let a = 0;
+        let b = 1;
+        let i = 3;
+        let ketQua = '';
+        while (i <= 20) {
+            console.log(b);
+            ketQua += ',' + b;
+            document.getElementById('fibonacci').innerText = ketQua;
+            let c = a + b;
+            a = b;
+            b = c;
+            i++;
+        }
+    }
+
+    function thucHien4() {
+        let a = 0;
+        let b = 1;
+        let i = 3;
+        let ketQua = '';
+        while (true) {
+            if (b % 5 === 0) {
+                ketQua += b;
+                document.getElementById('bai4').innerText = ketQua;
+                break;
+            }
+            let c = a + b;
+            a = b;
+            b = c;
+            i++;
+        }
+    }
+
+    function thucHien5() {
+        let a = 0;
+        let b = 1;
+        let i = 3;
+        let sum = a + b;
+        while (i <= 20) {
+            sum += b;
+            document.getElementById('bai5').innerText = sum;
+            let c = a + b;
+            a = b;
+            b = c;
+            i++;
+        }
+    }
+
+    function thucHien6() {
+        let a = 1;
+        let i = 1;
+        let sum = 0;
+        while (i <= 30) {
+            if (a % 7 === 0) {
+                sum += a;
+                console.log(a);
+                document.getElementById('bai6').innerText = sum;
+                i++;
+            }
+            a++;
+        }
+    }
+
+    function thucHien7() {
+        let ketQua = "";
+        for (let i = 1; i <= 100; i++) {
+            let a = i;
+            if (a % 3 === 0 && a % 5 === 0) {
+                a = "FizzBuzz";
+            } else {
+                if (a % 3 === 0) {
+                    a = "Fizz";
+                } else {
+                    if (a % 5 === 0) {
+                        a = "Buzz";
+                    }
+                }
+            }
+            ketQua += "," + a;
+            document.getElementById('bai7').innerText = ketQua;
+        }
+    }
+
+    function thucHien8() {
+        let star = parseInt(prompt("Nhập số bắt đầu trong khoảng muốn đoán:"));
+        let end = parseInt(prompt("Nhập số kết thúc trong khoảng muốn đoán:"));
+        let random = Math.floor(Math.random() * (end - star + 1)) + star;
+        console.log(random);
+        let i = 1;
+        while (i <= 3) {
+            let num = parseInt(prompt("Mời bạn đoán số:"));
+            if (num === random) {
+                alert("Chúc mừng bạn đã đoán đúng.");
+                break;
+            } else {
+                if (num < random) {
+                    alert("Bạn đã dự đoán 1 số nhỏ hơn. Vui lòng nhập lại!");
+                } else {
+                    alert("Bạn đã dự đoán 1 số lớn hơn. Vui lòng nhập lại!");
+                }
+            }
+            i++;
+        }
+    }
+</script>
+</body>
+</html>
