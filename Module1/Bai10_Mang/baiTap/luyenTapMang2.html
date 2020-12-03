@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 2</title>
+</head>
+<body>
+<p><b>Bài 1:</b>Viết chương trình khởi tạo mảng 2 chiều, gồm một bộ các phần tử có sẵn, in ra các phần tử trong mảng.
+</p>
+<input type="button" value="Thực Hiện" id="bai1" onclick="thucHien1()">
+<p id="ketQua1"></p>
+<hr>
+<p><b>Bài 2:</b>Viết chương trình khởi tạo mảng 2 chiều, gồm một bộ các phần tử có sẵn, in ra các phần tử trong mảng.
+</p>
+<input type="button" value="Thực Hiện" id="bai2" onclick="thucHien2()">
+<p id="ketQua2"></p>
+<hr>
+<p><b>Bài 3:</b>Viết một chương trình khai báo một mảng ký tự và kích thước của mảng. Chương trình này đếm số ký tự số
+    trong mảng.
+</p>
+<input type="button" value="Thực Hiện" id="bai3" onclick="thucHien3()">
+<p id="ketQua3"></p>
+<hr>
+<p><b>Bài 4:</b>Viết một chương trình để đếm số từ trong một chuỗi.
+</p>
+<input type="button" value="Thực Hiện" id="bai4" onclick="thucHien4()">
+<p id="ketQua4"></p>
+<hr>
+<p><b>Bài 5:</b>Viết một chương trình nhập vào 2 chuỗi, sau đó kiểm tra xem hai chuỗi có giống nhau hay không.
+</p>
+<input type="button" value="Thực Hiện" id="bai5" onclick="thucHien5()">
+<p id="ketQua5"></p>
+<hr>
+<p><b>Bài 6:</b>Viết chương trình nhập vào một mảng ký tự, tìm tất cả các ký tự trong mảng là (-) và thay thế các ký tự
+    này bởi ký tự ( _ ).
+</p>
+<input type="button" value="Thực Hiện" id="bai6" onclick="thucHien6()">
+<p id="ketQua6"></p>
+<hr>
+<script>
+    function thucHien1() {
+        let a = [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12]
+        ];
+        let data = "";
+        for (let i = 0; i < a.length; i++) {
+            data = data + "row" + i;
+            for (let j = 0; j < a[i].length; j++) {
+                data = data + "<br/>" + a[i][j] + "<br/>";
+            }
+        }
+        console.log(data);
+        document.getElementById('ketQua1').innerHTML = data;
+    }
+
+    function thucHien2() {
+        let a = ["m", "y", "g", " ", "e", "d", "o", "c"];
+        let b = a.reverse();
+        b.join(" ");
+        document.getElementById('ketQua2').innerText = b;
+    }
+
+    function thucHien3() {
+        let a = [1, 2, 3, 4, 5, 6];
+        let dem = a.length++;
+        document.getElementById('ketQua3').innerText = dem;
+    }
+
+    function thucHien4() {
+        let a = ["mot", "hai", "ba", "bon"];
+        let dem = 0;
+        for (let i = 0; i < a.length; i++) {
+            dem = dem + a[i].length;
+        }
+        document.getElementById('ketQua4').innerText = dem;
+    }
+
+    function thucHien5() {
+        let a = prompt("Nhập vào chuỗi a:");
+        let b = prompt("Nhập vào chuỗi b:");
+        if (a === b) {
+            alert("chuỗi a giống chuỗi b");
+        } else {
+            alert("Chuỗi a không giống chuỗi b");
+        }
+
+    }
+    function thucHien6() {
+        let a = [];
+        let max = parseInt(prompt("Độ dài của mảng là bao nhiêu:"));
+        for (let i = 0; i < max; i++){
+            a[i]=prompt("Nhập vào ký tự thứ "+ i);
+            if(a[i]==="-"){
+                a.splice(i,1,"_");
+            }
+        }
+        document.getElementById('ketQua6').innerText=a;
+    }
+</script>
+</body>
+</html>

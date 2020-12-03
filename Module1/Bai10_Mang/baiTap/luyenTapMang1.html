@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập mảng 01</title>
+</head>
+<body>
+<p><b>Bài 1:</b>Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và hiển thị xem có
+    bao nhiêu số nguyên lớn hơn hoặc bằng 10.</p>
+<input type="button" value="Thực hiện" id="bai1" onclick="thucHien1()">
+<p id="ketQua1"></p>
+<hr>
+<p><b>Bài 2:</b>Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau. Chương trình hiển thị ra được phần
+    tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.</p>
+<input type="button" value="Thực hiện" id="bai2" onclick="thucHien2()">
+<p id="ketQua2"></p>
+<hr>
+<p><b>Bài 3:</b>Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó. In ra giá trị trung
+    bình của các phần tử trong mảng.</p>
+<input type="button" value="Thực hiện" id="bai3" onclick="thucHien3()">
+<p id="ketQua3"></p>
+<hr>
+<p><b>Bài 4:</b> Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.</p>
+<input type="button" value="Thực hiện" id="bai4" onclick="thucHien4()">
+<p id="ketQua4"></p>
+<hr>
+<p><b>Bài 5:</b> Viết chương trình đếm số nguyên âm trong một chuỗi</p>
+<input type="button" value="Thực hiện" id="bai5" onclick="thucHien5()">
+<p id="ketQua5"></p>
+<hr>
+<p><b>Bài 6:</b> Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V.
+    Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra "V is in the array"
+    còn lại in ra "V is not in the array".</p>
+<input type="button" value="Thực hiện" id="bai6" onclick="thucHien6()">
+<p id="ketQua6"></p>
+<hr>
+<p><b>Bài 7:</b> Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V.
+    Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng (Bản chất việc xoá ở
+    đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng)</p>
+<input type="button" value="Thực hiện" id="bai7" onclick="thucHien7()">
+<p id="ketQua7"></p>
+<hr>
+<p><b>Bài 8:</b> Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. Chương trình sắp xếp mảng theo
+    thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.</p>
+<input type="button" value="Thực hiện" id="bai8" onclick="thucHien8()">
+<p id="ketQua8"></p>
+<hr>
+<p><b>Bài 9:</b> Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một
+    mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c.
+    Hiển thị mảng c.</p>
+<input type="button" value="Thực hiện" id="bai9" onclick="thucHien9()">
+<p id="ketQua9"></p>
+<hr>
+<script>
+    function thucHien1() {
+        let a = [10, 20, 50, 55, 4, 7, 62, 3, 5, 20];
+        let count = 0;
+        for (let i = 0; i < 10; i++) {
+            if (a[i] >= 10) {
+                count++;
+            }
+        }
+        document.getElementById('ketQua1').innerHTML = "Có " + count + " phần tử lớn hơn hoặc bằng 10.";
+    }
+
+    function thucHien2() {
+        let a = [1, 23, 33, 44, 9, 4, 6, 7, 34, 90];
+        let max = a[0];
+        let i;
+        for (i = 1; i < 10; i++) {
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+        i--;
+        document.getElementById('ketQua2').innerHTML = "Số lớn nhất là số: " + max + " ở vị trí " + i
+    }
+
+    function thucHien3() {
+        let a = [1, 23, 33, 44, 9, 4, 6, 7, 34, 90];
+        let tb = a[0];
+        let max = a[0];
+        let i;
+        for (i = 1; i < 10; i++) {
+            tb = tb + a[i];
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+        tb = tb / 10;
+        i--;
+        document.getElementById('ketQua3').innerHTML = "Số lớn nhất là số: " + max + " ở vị trí " + i + " và trung bình cộng của các phần tử là: " + tb;
+    }
+
+    function thucHien4() {
+        let a = [];
+        let i = parseInt(prompt('Bạn muốn độ dài mảng là bao nhiêu :'));
+        for (let j = 0; j < i; j++) {
+            a[j] = parseInt(prompt('Nhập vào giá trị thứ ' + j));
+        }
+        a.reverse();
+        document.getElementById('ketQua4').innerText = a;
+    }
+
+    function thucHien5() {
+        let a = [];
+        let dai = parseInt(prompt('Bạn muốn độ dài mảng là bao nhiêu :'));
+        let count = 0;
+        for (let i = 0; i < dai; i++) {
+            a[i] = parseInt(prompt('Nhập vào giá trị thứ ' + i));
+            if (a[i] < 0) {
+                count++;
+            }
+        }
+        document.getElementById('ketQua5').innerText = "Có " + count + " số nguyên âm trong mảng."
+    }
+
+    function thucHien6() {
+        let a = [];
+        let check = false;
+        let i = parseInt(prompt('Bạn muốn độ dài mảng là bao nhiêu :'));
+        for (let j = 0; j < i; j++) {
+            a[j] = parseInt(prompt('Nhập vào giá trị thứ ' + j));
+        }
+        let v = parseInt(prompt('Nhập số nguyên cần so sánh:'));
+        for (let x = 0; x < i; x++) {
+            if (a[x] === v) {
+                check = true;
+                document.getElementById('ketQua6').innerText = "V is in the array";
+            }
+        }
+        if (check === false) {
+            document.getElementById('ketQua6').innerText = "V is not in the array";
+        }
+    }
+
+    function thucHien7() {
+        let a = [];
+        let i = parseInt(prompt('Bạn muốn độ dài mảng là bao nhiêu :'));
+        for (let j = 0; j < i; j++) {
+            a[j] = parseInt(prompt('Nhập vào giá trị thứ ' + j));
+        }
+        let v = parseInt(prompt('Nhập số nguyên cần so sánh:'));
+        for (let x = 0; x < i; x++) {
+            if (a[x] === v) {
+                console.log(a[x]);
+                a.splice(x, 1);
+                x--;
+                a.push(0);
+            }
+        }
+        a.toString();
+        document.getElementById('ketQua7').innerText = a;
+    }
+
+    function thucHien8() {
+        let array = [];
+        for (let i = 0; i < 10; i++) {
+            array[i] = parseInt(prompt('Nhập vào số nguyên thứ' + i));
+        }
+        array.sort(function (a, b) {
+            return a - b;
+        });
+        document.getElementById('ketQua8').innerText = array;
+    }
+
+    function thucHien9() {
+        let a = [];
+        let b = [];
+        for (let i = 0; i < 10; i++) {
+            a[i] = parseInt(prompt('Nhập vào số nguyên thứ ' + i + ' của mảng a:'));
+        }
+        for (let j = 0; j < 10; j++) {
+            b[j] = parseInt(prompt('Nhập vào số nguyên thứ ' + j + ' của mảng b:'));
+        }
+        let c = a.concat(b);
+        document.getElementById('ketQua9').innerText = c;
+    }
+</script>
+</body>
+</html>

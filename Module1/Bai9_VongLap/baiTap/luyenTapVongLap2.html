@@ -61,6 +61,7 @@
         let num = parseInt(prompt("Nhập số lượng tam giác muốn hiển thị:"));
         let i = 1;
         let z = 1;
+        let hinh = "";
         let ketQua = '';
         while (z <= num) {
             while (i <= 5) {
@@ -72,17 +73,18 @@
             }
             let x = Math.round(Math.random() * innerWidth);
             let y = Math.round(Math.random() * innerHeight);
-            document.getElementById('ketQua3').style.left = x + 'px';
-            document.getElementById('ketQua3').style.right = y + 'px';
-            document.getElementById('ketQua3').innerHTML = ketQua;
+            hinh += '<p id="ketQua' + num + '" style="position: relative;left: ' + x + 'px; top: ' + y + 'px ">' + ketQua + '</p>';
+            // document.getElementById('ketQua3').style.left = x + 'px';
+            // document.getElementById('ketQua3').style.right = y + 'px';
+            // document.getElementById('ketQua3').innerHTML = ketQua;
             z++;
-        }
+        }   
+        document.getElementById('ketQua').innerHTML = hinh;
     }
 
     function thucHien4() {
         let h = parseInt(prompt('Nhập chiều dài hình chữ nhật:'));
         let w = parseInt(prompt('Nhập chiều rộng hình chữ nhật:'));
-        let i = 1;
         let ketQua = '';
         for (let i = 0; i <= h; i++) {
             for (let j = 0; j <= w; j++) {

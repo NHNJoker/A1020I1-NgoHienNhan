@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<form>
+    <input type="text" id="input" name="nhap">
+    <input type="button" value="Dịch" onclick="dich();">
+    <input type="text" id="output" name="xuat">
+</form>
+<script>
+    function dich() {
+        let tuDien = [
+            ["hello", "goobye"],
+            ["xin chào", "tạm biệt"]
+        ];
+        let check = false;
+        let a = document.getElementById('input').value;
+        for (let i = 0; i < tuDien.length; i++) {
+            for (let j = 0; j < tuDien[i].length; j++) {
+                console.log(a);
+                if (a === tuDien[i][j]) {
+                    check = true;
+                    i++;
+                    document.getElementById('output').value = tuDien[i][j];
+                    break;
+                }
+            }
+            if (check === false) {
+                alert('Không tìm thấy!');
+            }
+        }
+    }
+
+    // function dich() {
+    //     let eng = ["hello", "goobye"];
+    //     let vn = ["xin chào", "tạm biệt"];
+    //     let a = document.getElementById('input').value;
+    //     let b;
+    //     let i;
+    //     for (i = 0; i <= eng.length; i++) {
+    //         b = eng[i];
+    //         if (a === b) {
+    //             document.getElementById('output').value = vn[i];
+    //             break;
+    //         }
+    //     }
+    //     if (i>eng.length){
+    //         alert('Không tìm thấy!');
+    //     }
+    // }
+</script>
+</body>
+</html>
