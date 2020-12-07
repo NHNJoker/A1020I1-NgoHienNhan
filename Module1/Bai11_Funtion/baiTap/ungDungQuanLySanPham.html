@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+</head>
+<body>
+<h2>Add New Product</h2>
+<label><input type="text" id="newProduct"></label><input type="button" id="btnNew" value="Add" onclick="add()">
+<h2>Display All Product</h2>
+<p id="nameProduct"></p>
+<p id="listProduct"></p>
+<script>
+    let arrListProduct = [];
+
+    function addNew() {
+        let addProduct = document.getElementById('newProduct').value;
+        alert('Đã thêm sản phẩm '+ addProduct +' vào danh sách.');
+        arrListProduct.push(addProduct);
+        document.getElementById('newProduct').value = '';
+    }
+
+    function display() {
+        let list = "";
+        for (let i = 0; i < arrListProduct.length; i++) {
+            list = list + arrListProduct[i] + '<input type="button" value="edit" onclick="editProduct('+i+')"><input type="button" value="Delete" onclick="deleteProduct('+i+')"> <br/><br/>';
+        }
+        document.getElementById('listProduct').innerHTML = list;
+    }
+    function editProduct(i) {
+        let a = prompt('Nhập dữ liệu muốn thay đổi:');
+        arrListProduct.splice(i,1,a);
+        display();
+
+    }
+    function deleteProduct(i) {
+        arrListProduct.splice(i,1);
+        display();
+    }
+
+    function add() {
+        addNew();
+        display();
+    }
+
+</script>
+</body>
+</html>

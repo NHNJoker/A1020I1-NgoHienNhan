@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+<script>
+    let name = prompt('Họ và tên :');
+    let cmnd = parseInt(prompt('Số CMND:'));
+    let date = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
+    let email = prompt('Email:');
+    let customerType = prompt('Loại Khách hàng (Diamond, Platinum, Gold, Silver, Member):');
+    let discount = parseInt(prompt('Giảm giá:'));
+    let soLuong = parseInt(prompt('Số lượng đi kèm'));
+    let renDays = parseInt(prompt('Số ngày thuê'));
+    let typeOfSevice = prompt('loại dịch vụ (Villa, House, Room):');
+    let typeOfRoom = prompt('loại phòng thuê (Vip, Business,  Normal):');
+    let total = 500*renDays*(1-discount/100);
+    alert('Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+        '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+        '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom+
+    '\n\Total : '+total);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập hàm 1</title>
+</head>
+<body>
+<p><b>Bài 1:</b>Tạo hàm alertMessage() hiển thị hộp thoại chứa chuỗi "Xin chao". Gọi hàm từ trong phần body của trang
+    web.</p>
+<input id="btn1" type="button" value="Thực Hiện" onclick="bai1()">
+<hr>
+<p><b>Bài 2:</b>Tạo hàm nhận vào một đối số dạng số, tăng giá trị đối số đó lên 1 và trả lại giá trị cho lời gọi hàm.
+    Gọi hàm từ trong phần body của trang web và hiển thị kết quả lên màn hình.
+</p>
+<input id="btn2" type="button" value="Thực Hiện" onclick="bai2()">
+<hr>
+<p><b>Bài 3:</b> Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai, hiển thị hộp
+    thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai, trả về tổng của
+    hai tham số.
+</p>
+<input id="btn3" type="button" value="Thực Hiện" onclick="bai3()">
+<hr>
+<p><b>Bài 4:</b> Thêm các hàm alert() vào những vị trí thích hợp trong đoạn mã sau để bạn có thể nhìn thấy giá trị của
+    biến result trước và sau lời gọi hàm. Đoạn mã có dạng như sau:
+</p>
+<input id="btn4" type="button" value="Thực Hiện" onclick="bai4()">
+<hr>
+<p><b>Bài 5:</b>Tạo một mảng với bảy phần tử dạng chuỗi có giá trị là tên các ngôi sao sau: Polaris, Aldebaran, Deneb,
+    Vega, Altair, Dubhe và Regulus. Tạo một mảng khác với bảy phần tử dạng chuỗi có giá trị là tên các chòm sao tương
+    ứng chứa các ngôi sao: Ursa Minor, Tarurus, Cygnus, Lyra, Aquila, Ursa Major và Leo. Tiếp theo, tạo một hàm nhận vào
+    một tham số dạng chuỗi duy nhất. Trong hàm này, duyệt qua mảng thứ nhất để tìm tên ngôi sao. Nếu tìm thấy, trả lại
+    giá trị tương ứng với chỉ số đó ở mảng thứ hai. Nói cách khác, trả lại tên chòm sao của ngôi sao đó. Trong phần
+    body của trang web, dùng hộp thoại prompt để người dùng nhập vào tên của ngôi sao, sau đó gọi hàm với thông tin đầu
+    vào. Đừng quên xử lý trong trường hợp không tìm thấy ngôi sao nào. Cho kết quả hiển thị trên màn hình.
+</p>
+<input id="btn5" type="button" value="Thực Hiện" onclick="bai5()">
+<hr>
+<script>
+    function alertMessage() {
+        alert('Xin Chào')
+    }
+
+    function num(num) {
+        num = num + 1;
+        alert(num);
+    }
+
+    function soSanh2ThamSo(a, b) {
+        if (a > b) {
+            alert('a>b');
+        } else {
+            alert(a + '+' + b + '=' + (a + b));
+        }
+    }
+
+    function addNumbers() {
+        firstNum = 4;
+        secondNum = 8;
+        result = firstNum + secondNum;
+        return result;
+    }
+
+    let result = 0;
+    let arrNameStar = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+    let arrConstellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+
+    function findConstellation(name) {
+        let check = false;
+        for (let i = 0; i<arrNameStar.length;i++){
+            if (name===arrNameStar[i]){
+                alert('Chòm sao của ngôi sao '+arrNameStar[i]+' là: '+arrConstellation[i]);
+                check = true;
+            }
+        }
+        if (check===false){
+            alert('Bạn nhập sai tên ngôi sao.');
+        }
+    }
+
+    function bai1() {
+        alertMessage();
+    }
+
+    function bai2() {
+        let num1 = 3;
+        num(num1);
+    }
+
+    function bai3() {
+        let a = parseInt(prompt('Nhập số a:'));
+        let b = parseInt(prompt('Nhập số b:'));
+        soSanh2ThamSo(a, b);
+    }
+
+    function bai4() {
+        alert('Trước khi gọi hàm : ' + result);
+        addNumbers();
+        result = addNumbers();
+        alert('Sau khi gọi hàm : ' + result);
+    }
+    function bai5() {
+        let name = prompt('Mời bạn nhập tên ngôi sao bạn muốn tìm:'+'\n'+arrNameStar);
+        findConstellation(name);
+    }
+</script>
+</body>
+</html>

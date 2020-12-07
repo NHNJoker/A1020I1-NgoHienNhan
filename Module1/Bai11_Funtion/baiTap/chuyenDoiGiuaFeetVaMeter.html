@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi giữa feet và meters</title>
+</head>
+<body>
+<p>Feet:</p>
+<input id="feet" type="number">
+<br/><br/>
+<input id="btn" type="button" onclick="btn()" value="Chuyển đổi">
+<br/><br/>
+<p>met:</p>
+<input id="met" type="number">
+<script>
+    function feetSangMet(feet) {
+        return 0.305 * feet;
+    }
+
+    function metSangFeet(met) {
+        return 3.279 * met;
+    }
+
+    function btn() {
+        let m = document.getElementById('met').value;
+        let f = document.getElementById('feet').value;
+        if (m === "") {
+            document.getElementById('met').value = feetSangMet(f);
+        }
+        if (f === "") {
+            document.getElementById('feet').value = metSangFeet(m);
+        }
+    }
+</script>
+</body>
+</html>

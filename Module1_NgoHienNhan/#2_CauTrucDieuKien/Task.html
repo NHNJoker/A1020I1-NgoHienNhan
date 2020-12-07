@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+<script>
+    let name = 'Ngô Hiền Nhân';
+    let cmnd = 123456789;
+    let date = '11/06/1999';
+    let email = 'ngonhanit@gmail.com';
+    let address = 'Đà nẵng';
+    let customerType = 'Diamond';
+    let discount = 10;
+    let soLuong = 5;
+    let renDays = 10;
+    let typeOfSevice = 'Vip';
+    let typeOfRoom = 'Villa';
+    let input = parseInt(prompt(' 1.Show information customer.\n\ 2.Edit information customer.\n\ 3.Show the amount to be paid after discount.'));
+    if (input > 3) {
+        alert('Failed.')
+    } else {
+        switch (input) {
+            case 1:
+                alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                    '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                    '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                break;
+            case 2:
+                let edit = parseInt(prompt('Edit information customer : \n\ 1.Full name : ' + name + '\n\ 2.ID card : ' + cmnd + '\n\ 3.Date of birth : ' + date + '' +
+                    '\n\ 4.Email : ' + email + '\n\ 5.Type customer : ' + customerType + '\n\ 6.Discount : ' + discount +
+                    '\n\ 7.Accompanying : ' + soLuong + '\n\ 8.Ren days : ' + renDays + '\n\ 9.Type service : ' + typeOfSevice +
+                    '\n\ 10.Type room : ' + typeOfRoom + '\n\ 11.Address : ' + address));
+                if (edit > 11) {
+                    alert('Failed.');
+                    break;
+                } else {
+                    switch (edit) {
+                        case 1:
+                            name = prompt('Name you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 2:
+                            cmnd = prompt('ID card you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 3:
+                            date = prompt('Date of birth you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 4:
+                            email = prompt('Email you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 5:
+                            customerType = prompt('Type customer you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 6:
+                            discount = prompt('Discount you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 7:
+                            soLuong = prompt('Accompanying you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 8:
+                            renDays = prompt('Ren days you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 9:
+                            typeOfSevice = prompt('Type service you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 10:
+                            typeOfRoom = prompt('Type room you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                        case 11:
+                            address = prompt('Address you want edit:');
+                            alert('Information customer : \n\Full name : ' + name + '\n\ID card : ' + cmnd + '\n\Date of birth : ' + date + '\n\Email : ' + email +
+                                '\n\Type customer : ' + customerType + '\n\Discount : ' + discount + '\n\Accompanying : ' + soLuong +
+                                '\n\Ren days : ' + renDays + '\n\Type service : ' + typeOfSevice + '\n\Type room : ' + typeOfRoom + '\n\ Address : ' + address);
+                            break;
+                    }
+                }
+                break;
+            case 3:
+                let roomRates;
+                if (typeOfRoom === 'Villa') {
+                    roomRates = 500;
+                } else {
+                    if (typeOfRoom === 'House') {
+                        roomRates = 300;
+                    } else if (typeOfRoom === 'Room') {
+                        roomRates = 100;
+                    }
+                }
+                console.log(roomRates);
+                let discountAddress = 0;
+                if (address === 'Đà nẵng') {
+                    discountAddress = 20;
+                } else {
+                    if (address === 'Quảng nam') {
+                        discountAddress = 10;
+                    } else if (address === 'Huế') {
+                        discountAddress = 5;
+                    }
+                }
+                let disscountRenDays = 0;
+                if (renDays >= 7) {
+                    disscountRenDays = 30;
+                } else {
+                    if (renDays >= 5) {
+                        disscountRenDays = 20;
+                    } else if (renDays >= 2) {
+                        disscountRenDays = 10;
+                    }
+                }
+                let disscountCusstomer = 0;
+                if (customerType === 'Diamond') {
+                    disscountCusstomer = 15;
+                } else {
+                    if (customerType === 'Platium') {
+                        disscountCusstomer = 10;
+                    } else {
+                        if (customerType === 'Gold') {
+                            disscountCusstomer = 5;
+                        } else if (customerType === 'Silver') {
+                            disscountCusstomer = 2;
+                        }
+                    }
+                }
+                let discount2 = discountAddress + disscountRenDays + disscountCusstomer;
+                let amount = roomRates * renDays - discount2;
+                alert('Amount : ' + amount);
+        }
+    }
+</script>
+</body>
+</html>

@@ -6,24 +6,24 @@
 </head>
 <body>
 <h1 style="width: 100% ;align-content: center">Type anything slowly</h1>
-<input type="text" style="height: 150px" id="txt" onkeydown="text()">
+<input type="text" style="height: 150px" id="txt" onkeyup="text()">
 <script>
     // let a = ["T","Ô","I","L","À"," ","M","Ộ","T","Đ","Ứ","A"," ","N","G","Ố","C","!","!","!"];
     function text() {
         let a = ["T", "Ô", "I", " ", "L", "À", " ", "M", "Ộ", "T", " ", "Đ", "Ứ", "A", " ", "N", "G", "Ố", "C", "!", "!"];
         let b = "";
         let t = document.getElementById('txt').value;
-        if (t.length > 0) {
+        if (t.length >= 0) {
+            document.getElementById('txt').value = "";
             for (let i = 0; i < t.length; i++) {
                 b = b + a[i];
-                if (i===21){
-                    document.getElementById('txt').value=0;
-                    b="";
+                if (i === 21) {
+                    document.getElementById('txt').value =0;
+                    b = "";
                 }
             }
         }
-        document.getElementById('txt').value=b;
-        setTimeout("text()",1);
+        document.getElementById('txt').value = b;
     }
 </script>
 </body>

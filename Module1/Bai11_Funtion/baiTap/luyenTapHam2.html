@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập hàm 2</title>
+</head>
+<body>
+<p><b>Bài 1:</b> Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+<input id="btn1" type="button" value="Thực Hiện" onclick="bai1()">
+<hr>
+<p><b>Bài 2:</b> Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được.</p>
+<input id="btn2" type="button" value="Thực Hiện" onclick="bai2()">
+<hr>
+<p><b>Bài 3:</b> Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+<input id="btn3" type="button" value="Thực Hiện" onclick="bai3()">
+<hr>
+<p><b>Bài 4:</b> Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược
+    lại trả về
+    false.</p>
+<input id="btn4" type="button" value="Thực Hiện" onclick="bai4()">
+<hr>
+<p><b>Bài 5:</b> Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
+</p>
+<input id="btn5" type="button" value="Thực Hiện" onclick="bai5()">
+<hr>
+<p><b>Bài 6:</b> Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. Nếu là nguyên
+    dương trả về true, ngược lại trả về false.
+</p>
+<input id="btn6" type="button" value="Thực Hiện" onclick="bai6()">
+<hr>
+<p><b>Bài 7:</b> Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.
+</p>
+<input id="btn7" type="button" value="Thực Hiện" onclick="bai7()">
+<hr>
+<p><b>Bài 8:</b> Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.
+</p>
+<input id="btn8" type="button" value="Thực Hiện" onclick="bai8()">
+<hr>
+<p><b>Bài 9 :</b> Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+    Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.
+</p>
+<input id="btn9" type="button" value="Thực Hiện" onclick="bai9()">
+<hr>
+<script>
+    function binhPhuong(a) {
+        a = a * a;
+        alert(a);
+    }
+
+    function hinhTron(r) {
+        let dienTich = r * r * 3.14;
+        let chuVi = r * 2 * 3.14;
+        alert('Diện tích là: ' + dienTich + 'và chu vi là:' + chuVi);
+    }
+
+    function giaiThua(n) {
+        let a = 1;
+        let check = false;
+        if (Number.isInteger(n) && n > 0) {
+            for (let i = 1; i <= n; i++) {
+                a = a * i;
+                check = true;
+            }
+        } else {
+            alert('Giá trị nhập vào không phải số nguyên dương !!')
+        }
+        if (check === true) {
+            alert('Giai thừa của ' + n + ' là: ' + a);
+        }
+    }
+
+    function min(a, b, c) {
+        if (Number.isInteger(a) && Number.isInteger(b) && Number.isInteger(c)) {
+            if (a > b) {
+                if (b < c) {
+                    alert('Min là : ' + b);
+                } else {
+                    alert('Min là : ' + c);
+                }
+            } else {
+                if (a < c) {
+                    alert('Min là : ' + a);
+                } else {
+                    alert('Min là : ' + c);
+                }
+            }
+        }
+    }
+
+    function isNum(a) {
+        if (!isNaN(a)) {
+            return true;
+        }
+        return false;
+    }
+
+    function isInt(a) {
+        if (!isNaN(a)) {
+            console.log("if 1");
+            a = Number.parseFloat(a);
+            if (Number.isInteger(a) && a > 0) {
+                console.log("if 2");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function doi2So(a, b) {
+        let c;
+        if (!isNaN(a) && !isInt(b)) {
+            a = Number.parseFloat(a);
+            b = Number.parseFloat(b);
+            if (Number.isInteger(a) && Number.isInteger(b)) {
+                c = a;
+                a = b;
+                b = c;
+                alert('a =' + a + ' b =' + b);
+            }
+        } else {
+            alert('Nhập sai dữ liệu!!')
+        }
+    }
+
+    function bai8() {
+        let array = [];
+        let check = false;
+        let arrLength = parseInt(prompt('Bạn muốn nhập bao nhiêu số nguyên:'));
+        for (let i = 0; i < arrLength; i++) do {
+            let input = prompt('Nhập vào giá trị:');
+            if(!isNaN(input)){
+                input=Number.parseFloat(input);
+            }else {alert('Dữ liệu không phải số nguyên!!');}
+            if (Number.isInteger(input)){
+                array[i]=input;
+            }
+            check=true;
+        } while (!check);
+        alert(array.reverse());
+    }
+
+    function bai1() {
+        let a = parseInt(prompt('Nhập số cần tính'));
+        binhPhuong(a);
+    }
+
+    function bai2() {
+        let r = parseInt(prompt('Nhập bán kính hình tròn'));
+        hinhTron(r);
+    }
+
+    function bai3() {
+        let n = parseInt(prompt('Nhập giá trị'));
+        giaiThua(n);
+    }
+
+    function bai4() {
+        let a = prompt('Nhập giá trị');
+        isNum(a);
+        alert(isNum(a));
+    }
+
+    function bai5() {
+        let a = parseInt(prompt('Nhập vào giá trị a:'));
+        let b = parseInt(prompt('Nhập vào giá trị b:'));
+        let c = parseInt(prompt('Nhập vào giá trị c:'));
+        min(a, b, c);
+    }
+
+    function bai6() {
+        let a = parseInt(prompt('Nhập vào giá trị:'));
+        isInt(a);
+        alert(isInt(a));
+    }
+
+    function bai7() {
+        let a = prompt('Nhập vào giá trị a');
+        let b = prompt('Nhập vào giá trị b');
+        doi2So(a, b);
+    }
+    function bai9() {
+        let array = [];
+        let count = 0;
+        let arrLength = parseInt(prompt('Nhập vào độ dài của mảng:'));
+        for (let i = 0; i<arrLength;i++){
+            array[i]=prompt('Nhập vào ký tự thứ '+i+' :');
+        }
+        let charCheck = prompt('Nhập vào ký tự cần kiểm tra:')
+        for(let i = 0; i<arrLength;i++){
+            if (charCheck === array[i]){
+                count++;
+            }
+        }
+        if (count>0){
+            alert(count);
+        }else {
+            alert(-1);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>#4 Mảng</title>
+</head>
+<body>
+<script>
+    let arrNameCustomer = [];
+    let output = "";
+    while (true) {
+        let input = parseInt(prompt(' 1.Add name customer.\n 2.Delete customer.'));
+        switch (input) {
+            case 1:
+                let length = parseInt(prompt('The number of customer you want add:'));
+                for (let i = 0; i < length; i++) {
+                    arrNameCustomer.push(prompt('Name customer no' + (i + 1)));
+                }
+                arrNameCustomer.sort();
+                for (let i = 0; i < arrNameCustomer.length; i++) {
+                    output = output + (i + 1) + "." + arrNameCustomer[i] + '\n' + '.';
+                }
+                alert(output);
+                break;
+            case 2:
+                let check = false;
+                let afterDelete = "";
+                let elementEdit =prompt('Name customer you want delete:'+'\n'+output);
+                for (let i = 0; i<arrNameCustomer.length;i++){
+                    if (elementEdit===arrNameCustomer[i]){
+                        arrNameCustomer.splice(i,1);
+                        check = true;
+                    }
+                }
+                arrNameCustomer.sort();
+                for (let i = 0; i < arrNameCustomer.length; i++) {
+                    afterDelete = afterDelete + (i + 1) + "." + arrNameCustomer[i] + '\n' + '.';
+                }
+                alert(afterDelete);
+                if (!check){
+                    alert('The data you entered is not in the list');
+                }
+                break;
+            default: {
+                alert('failed');
+            }
+        }
+    }
+</script>
+</body>
+</html>
