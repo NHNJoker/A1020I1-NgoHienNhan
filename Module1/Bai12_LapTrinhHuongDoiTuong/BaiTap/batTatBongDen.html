@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bật tắt bóng đèn</title>
+</head>
+<body>
+<script>
+    class SwitchButton {
+        constructor() {
+            this.status = false;
+            this.lamp;
+        }
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
+        }
+
+        switchOff() {
+            this.status = false;
+            this.lamp.status = false;
+        }
+
+        switchOn() {
+            this.status = true;
+            this.lamp.status = true
+        }
+    }
+
+    class ElectricLamp {
+        constructor() {
+            this.status = false;
+        }
+
+        turnOff() {
+            return this.status = true;
+        }
+
+        turnOn() {
+            return this.status = false;
+        }
+    }
+
+    let bongDen = new ElectricLamp();
+    let congTac = new SwitchButton();
+    congTac.connectToLamp(bongDen);
+    alert(congTac.status)
+    alert(bongDen.status)
+    congTac.switchOn();
+    alert(congTac.status)
+    alert(bongDen.status)
+    // for (let i = 0; i <= 10; i++) {
+    //     if (congTac.status) {
+    //         congTac.switchOn();
+    //         console.log('trạng thái công tắc: ' + congTac.status);
+    //         console.log('trạng thái bóng đèn: ' + bongDen.status);
+    //     } else {
+    //         congTac.switchOff();
+    //         console.log('trạng thái công tắc: ' + congTac.status);
+    //         console.log('trạng thái bóng đèn: ' + bongDen.status);
+    //     }
+    // }
+</script>
+</body>
+</html>

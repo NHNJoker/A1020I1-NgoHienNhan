@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adma va eva</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor() {
+            this.weight = 10;
+        }
+
+        decrease() {
+            this.weight -= 1;
+        }
+
+        isEmpty() {
+            if (this.weight !== 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        getWeight(){
+            return this.weight;
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            return this.gender;
+        }
+
+        setGender(){
+            this.gender = true;
+        }
+        checkApple(apple){
+            return apple.isEmpty();
+        }
+        eat(apple){
+            if (apple.isEmpty()===false){
+                this.weight ++;
+                apple.weight --;
+            }else {
+                console.log('ăn hết táo');
+            }
+        }
+        say(){
+            console.log('hello');
+        }
+        getName(){
+            return this.name;
+        }
+        setName(){
+            this.name = prompt('Nhập tên cần sửa');
+        }
+        getWeight(){
+            return this.weight;
+        }
+        setWeight(){
+            this.weight = parseFloat(prompt('Nhập vào cân nặng muốn sửa'));
+        }
+    }
+    let objApple = new Apple();
+    let objEva = new Human('Eva',false,45);
+    let objAdam = new Human('Adam',true,65);
+    do {
+        objEva.eat(objApple);
+        objAdam.eat(objApple);
+        console.log('cân năng Eva: '+objEva.weight);
+        console.log('cân nặng Adam: '+objAdam.weight);
+        console.log('cân nặng quả táo: '+objApple.weight);
+    }while (!objApple.isEmpty())
+</script>
+</body>
+</html>

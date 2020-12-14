@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="doC"></p>
+<p id="doK"></p>
+<script>
+    class Temperatue{
+        constructor(doC) {
+            this.doC=doC;
+        }
+        doF(doC){
+            document.getElementById('doC').innerText=(doC*1.8)+32;
+        }
+        doKenvin(doC){
+            document.getElementById('doK').innerText=doC+273.5;
+        }
+    }
+    let objTemperatue = new Temperatue(25);
+    objTemperatue.doF(25);
+    objTemperatue.doKenvin(25);
+</script>
+</body>
+</html>

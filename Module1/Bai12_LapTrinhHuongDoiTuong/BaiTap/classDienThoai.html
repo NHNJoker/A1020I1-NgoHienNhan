@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dien thoai</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        constructor() {
+            this.pin = 100;
+            this.status = true;
+            this.dangSoan = [];
+            this.thuDen = [];
+            this.thuDi = [];
+        }
+
+        getPin() {
+            if (this.status) {
+                this.pin -= 1;
+                return this.pin;
+            }
+        }
+
+        onMobile() {
+            if (!this.status) {
+                this.pin -= 1;
+                this.status = true;
+            }
+        }
+
+        offMobile() {
+            if (this.status) {
+                this.pin -= 1;
+                this.status = false;
+            }
+        }
+
+        checkMobile() {
+            if (this.status === true) {
+                this.pin -= 1;
+                alert('điện thoại đang bật');
+            } else {
+                this.pin -= 1;
+                alert('điện thoại đang tắt');
+            }
+        }
+
+        sacPin() {
+            if (this.status) {
+                this.pin = 100;
+            }
+        }
+
+        soanTin() {
+            if (this.status) {
+                this.pin -= 1;
+                this.dangSoan = this.dangSoan.push(prompt('Soạn tin:'));
+            }
+        }
+
+        nhanTin(thuDen1) {
+            if (this.status) {
+                this.pin -= 1;
+                this.thuDen = this.thuDen.unshift(thuDen1);
+            }
+        }
+
+        guiTin(noiDung, mobileOther) {
+            if (this.status) {
+                this.pin -= 1;
+                this.thuDi.unshift(noiDung);
+                mobileOther.thuDen.unshift(noiDung);
+            }
+        }
+
+        xemTinDen() {
+            if (this.status) {
+                this.pin -= 1;
+                return this.thuDen;
+            }
+        }
+
+        xemTinGui() {
+            if (this.status) {
+                this.pin -= 1;
+                return this.thuDi;
+            }
+        }
+    }
+
+    let objApple = new Mobile();
+    let objNokia = new Mobile();
+    objNokia.guiTin('Hello', objApple);
+    console.log(objApple.xemTinDen());
+    console.log(objNokia.xemTinGui());
+    console.log(objNokia.getPin());
+    objNokia.offMobile();
+</script>
+</body>
+</html>
