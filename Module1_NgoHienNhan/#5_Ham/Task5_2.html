@@ -145,35 +145,32 @@
         } while (!check);
         check = false;
         do {
-            typeOfCustomer= prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
-            if (typeOfCustomer==='Diamond'||typeOfCustomer==='Platinum'||typeOfCustomer==='Gold'||typeOfCustomer==='Silver'||typeOfCustomer==='Member'){
-                check=true;
-            }
-            else {
+            typeOfCustomer = prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
+            if (typeOfCustomer === 'Diamond' || typeOfCustomer === 'Platinum' || typeOfCustomer === 'Gold' || typeOfCustomer === 'Silver' || typeOfCustomer === 'Member') {
+                check = true;
+            } else {
                 alert('Type of customer is invalid !!! please try again.')
             }
-        }while (!check);
-        check=false;
+        } while (!check);
+        check = false;
         do {
-            typeOfSevice=prompt('loại dịch vụ (Villa, House, Room):');
-            if (typeOfSevice==='Villa'||typeOfSevice==='House'||typeOfSevice==='Room'){
-                check=true;
-            }
-            else {
+            typeOfSevice = prompt('loại dịch vụ (Villa, House, Room):');
+            if (typeOfSevice === 'Villa' || typeOfSevice === 'House' || typeOfSevice === 'Room') {
+                check = true;
+            } else {
                 alert('Type of service is invalid !!! please try again.')
             }
-        }while (!check);
-        check=false;
+        } while (!check);
+        check = false;
         do {
             typeOfRoom = prompt('loại phòng thuê (Vip, Business,  Normal):');
-            if (typeOfRoom==='Vip'||typeOfRoom==='Business'||typeOfRoom==='Normal'){
+            if (typeOfRoom === 'Vip' || typeOfRoom === 'Business' || typeOfRoom === 'Normal') {
                 check = true;
-            }
-            else {
+            } else {
                 alert('Type of room is invalid !!! please try again.')
             }
-        }while (!check);
-        check=false;
+        } while (!check);
+        check = false;
         arrNewCustomer.push(name);
         arrNewCustomer.push(date);
         arrNewCustomer.push(cmnd);
@@ -357,41 +354,38 @@
                     }
                 } while (!check);
                 break;
-                case 6:
-                    do {
-                        a= prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
-                        if (a==='Diamond'||a==='Platinum'||a==='Gold'||a==='Silver'||a==='Member'){
-                            check=true;
-                        }
-                        else {
-                            alert('Type of customer is invalid !!! please try again.')
-                        }
-                    }while (!check);
-                    break;
+            case 6:
+                do {
+                    a = prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
+                    if (a === 'Diamond' || a === 'Platinum' || a === 'Gold' || a === 'Silver' || a === 'Member') {
+                        check = true;
+                    } else {
+                        alert('Type of customer is invalid !!! please try again.')
+                    }
+                } while (!check);
+                break;
             case 7:
                 do {
-                    a=prompt('loại dịch vụ (Villa, House, Room):');
-                    if (a==='Villa'||a==='House'||a==='Room'){
-                        check=true;
-                    }
-                    else {
+                    a = prompt('loại dịch vụ (Villa, House, Room):');
+                    if (a === 'Villa' || a === 'House' || a === 'Room') {
+                        check = true;
+                    } else {
                         alert('Type of service is invalid !!! please try again.')
                     }
-                }while (!check);
+                } while (!check);
                 break;
             case 8:
                 do {
                     a = prompt('loại phòng thuê (Vip, Business,  Normal):');
-                    if (a==='Vip'||a==='Business'||a==='Normal'){
+                    if (a === 'Vip' || a === 'Business' || a === 'Normal') {
                         check = true;
-                    }
-                    else {
+                    } else {
                         alert('Type of room is invalid !!! please try again.')
                     }
-                }while (!check);
+                } while (!check);
                 break;
         }
-        check=false;
+        check = false;
         arrCustomer[i].splice(j, 1, a);
         let tableShow = '<h2>Thông tin khách hàng sau khi chỉnh sửa:</h2>\n' + '<table border="1">\n' +
             '    <tr>\n' +
@@ -419,8 +413,9 @@
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
     }
+
     function deleteCustomer(i) {
-        arrCustomer.splice(i,1);
+        arrCustomer.splice(i, 1);
         tableAdd();
     }
 </script>
