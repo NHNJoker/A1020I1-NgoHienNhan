@@ -6,11 +6,47 @@
 </head>
 <body>
 <script>
-    class Remote{
+    class TiVi{
         constructor() {
-
+         this.status = 'vtv1';
+         this.amLuong = 50;
+         this.onOff= true;
+        }
+        setChuyenKenh(kenh){
+            this.status=kenh;
+        }
+        setAmLuong(donVi){
+            this.amLuong+=donVi;
         }
     }
+    class Remote{
+        constructor() {
+        }
+        setChange(tivi,kenh){
+            tivi.status =kenh;
+        }
+        setVolume(tivi,amLuong){
+            tivi.amLuong+=amLuong;
+        }
+        setOn(tivi){
+            tivi.onOff = true;
+        }
+        setOff(tivi){
+            tivi.onOff = false;
+        }
+    }
+    let objTV = new TiVi();
+    let objRemote =new Remote();
+    objRemote.setOn(objTV);
+    console.log('Tivi bat hay tat: '+objTV.onOff);
+    objTV.setChuyenKenh('vtv7');
+    console.log('Kenh: '+objTV.status);
+    objRemote.setChange(objTV,'vtv3');
+    console.log('Kenh sau khi duoc remote chuyen: '+objTV.status);
+    objRemote.setVolume(objTV,2);
+    console.log('Am luong sau khi tawng:'+objTV.amLuong);
+    objRemote.setOff(objTV);
+    console.log('Tivi bat hay tat: '+objTV.onOff);
 </script>
 </body>
 </html>

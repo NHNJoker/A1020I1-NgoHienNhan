@@ -6,12 +6,234 @@
 </head>
 <body>
 <input type="button" value="Add New Customer" onclick="add()">
+<input type="button" value="Add New Employee" onclick="addEmployee()">
+<p id="nhanVien"></p>
 <p id="table"></p>
 <p id="show"></p>
 <script>
     let check = false;
     let listCustomer = [];
+    let listEmployees = [];
 
+    class Employee {
+        constructor() {
+            this.name = '';
+            this.idCard = '';
+            this.dayOfBirth = '';
+            this.email = '';
+            this.office = '';
+        }
+
+        setName() {
+            let nameEdit = "";
+            let name;
+            name = prompt('Họ và tên :');
+            name = name.trim().toLowerCase();
+            for (let i = 0; i < name.length; i++) {
+                if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
+                    continue;
+                }
+                if (i === 0 || name.charAt(i - 1) === " ") {
+                    nameEdit += name.charAt(i).toUpperCase();
+                    continue
+                }
+                nameEdit += name.charAt(i);
+            }
+            this.name = nameEdit;
+            return this.name;
+        }
+
+        getName() {
+            alert(this.name);
+        }
+
+        setIdCard() {
+            do {
+                this.idCard = prompt('Số CMND:');
+                if (!isNaN(this.idCard)) {
+                    this.idCard = Number.parseFloat(this.idCard);
+                }
+                if (!Number.isInteger(this.idCard)) {
+                    alert('ID card is invalid !!! please try again.');
+                    continue;
+                }
+                if (this.idCard < 100000000 || this.idCard > 999999999) {
+                    alert('ID card is invalid !!! please try again.');
+                    continue;
+                }
+                check = true;
+            } while (!check);
+            check = false;
+            return this.idCard;
+        }
+
+        getIdCard() {
+            alert(this.idCard);
+        }
+
+        setDayOfBirth() {
+            do {
+                this.dayOfBirth = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
+                if (this.dayOfBirth.charAt(2) === '/' && this.dayOfBirth.charAt(5) === '/') {
+                    let day = this.dayOfBirth.substring(0, 2);
+                    let month = this.dayOfBirth.substring(3, 5);
+                    let year = this.dayOfBirth.substring(6, 10);
+                    if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                        day = Number.parseFloat(day);
+                        month = Number.parseFloat(month);
+                        year = Number.parseFloat(year);
+                        if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
+                            if (day < 32 && month < 13 && year > 1950) {
+                                check = true;
+                            }
+                        }
+                    }
+                }
+                if (!check) {
+                    alert('Date of birth is invalid !!! please try again.');
+                }
+            } while (!check);
+            check = false;
+            return this.dayOfBirth;
+        }
+
+        getDayOfBirth() {
+            alert(this.dayOfBirth);
+        }
+
+        setEmail() {
+            do {
+                let countAt = 0;
+                let countDoc = 0;
+                this.email = prompt('Email:');
+                for (let i = 0; i < this.email.length; i++) {
+                    if (this.email.charAt(i) === '@') {
+                        countAt++;
+                        for (let j = i + 1; j < this.email.length; j++) {
+                            if (this.email.charAt(j) === '.') {
+                                countDoc++;
+                            }
+                        }
+                    }
+                }
+                if (countDoc < 1 || countAt !== 1) {
+                    alert('Email is invalid !!! please try again.')
+                } else {
+                    check = true;
+                }
+            } while (!check);
+            check = false;
+            return this.email;
+        }
+
+        getEmail() {
+            alert(this.email);
+        }
+
+        setOffice() {
+            do {
+                this.office = prompt('Chức vụ (Manager, Sale, Marketing):');
+                if (this.office === 'Manager' || this.office === 'Sale' || this.office === 'Marketing') {
+                    check = true;
+                } else {
+                    alert('Office is invalid !!! please try again.')
+                }
+            } while (!check);
+            check = false;
+            return this.office;
+        }
+
+        setSalary() {
+            let salary = 0;
+            if (this.office === 'Manager') {
+                salary = 500;
+            } else {
+                if (this.office === 'Sale') {
+                    salary = 300;
+                } else {
+                    salary = 200;
+                }
+            }
+            return salary;
+        }
+    }
+
+    function addNewEmployee() {
+        let arrNewEmploy = [];
+        let objEmployee = new Employee();
+        arrNewEmploy.push(objEmployee.setName());
+        arrNewEmploy.push(objEmployee.setDayOfBirth());
+        arrNewEmploy.push(objEmployee.setIdCard());
+        arrNewEmploy.push(objEmployee.setEmail());
+        arrNewEmploy.push(objEmployee.setOffice());
+        arrNewEmploy.push(objEmployee.setSalary());
+        return arrNewEmploy;
+    }
+
+    function tableAddEmploy() {
+        let tableString ='<h2>Danh sách nhân viên:</h2>\n'+ '<table>\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Full name</th>\n' +
+            '        <th>Date of birth</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < listEmployees.length; i++) {
+            tableString = tableString + '<tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + listEmployees[i][0] + '</td>\n' +
+                '        <td>' + listEmployees[i][1] + '</td>\n' +
+                '<td><input type="button" value="Display Information Employee" onclick="displayEmployee(' + i + ')"></td>\n' +
+                '<td><input type="button" value="Salary of Employeesr " onclick="salary(' + i + ')"></td>\n' +
+                '    </tr>'
+        }
+        tableString = tableString + '</table>';
+        document.getElementById('nhanVien').innerHTML = tableString;
+    }
+
+    function addEmployee() {
+        listEmployees.push(addNewEmployee());
+        tableAddEmploy();
+    }
+    function displayEmployee(i) {
+        let tableShow = '<h2>Thông tin nhân viên:</h2>\n' + '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Full name</th>\n' +
+            '        <th>Date of birth</th>\n' +
+            '        <th>ID card</th>\n' +
+            '        <th>Email</th>\n' +
+            '        <th>Office</th>\n' +
+            '    </tr>'
+            + '<tr>\n' +
+            '        <td>' + listEmployees[i][0] + '</td>\n' +
+            '        <td>' + listEmployees[i][1] + '</td>\n' +
+            '        <td>' + listEmployees[i][2] + '</td>\n' +
+            '        <td>' + listEmployees[i][3] + '</td>\n' +
+            '        <td>' + listEmployees[i][4] + '</td>\n' +
+            '    </tr>'
+            + '</table>';
+        document.getElementById('show').innerHTML = tableShow;
+    }
+    function salary(i) {
+        let tableShow = '<h2>Thông tin nhân viên và lương:</h2>\n' + '<table border="1">\n' +
+            '    <tr>\n' +
+            '        <th>Full name</th>\n' +
+            '        <th>Date of birth</th>\n' +
+            '        <th>ID card</th>\n' +
+            '        <th>Email</th>\n' +
+            '        <th>Office</th>\n' +
+            '        <th>Salary</th>\n' +
+            '    </tr>'
+            + '<tr>\n' +
+            '        <td>' + listEmployees[i][0] + '</td>\n' +
+            '        <td>' + listEmployees[i][1] + '</td>\n' +
+            '        <td>' + listEmployees[i][2] + '</td>\n' +
+            '        <td>' + listEmployees[i][3] + '</td>\n' +
+            '        <td>' + listEmployees[i][4] + '</td>\n' +
+            '        <td>' + listEmployees[i][5] + '</td>\n' +
+            '    </tr>'
+            + '</table>';
+        document.getElementById('show').innerHTML = tableShow;
+    }
     class Customer {
         constructor() {
             this.name = '';
@@ -257,7 +479,7 @@
     }
 
     function tableAdd() {
-        let tableString = '<table>\n' +
+        let tableString ='<h2>Danh sách khách hàng:</h2>\n'+ '<table>\n' +
             '    <tr>\n' +
             '        <th>STT</th>\n' +
             '        <th>Full name</th>\n' +
