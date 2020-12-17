@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>#5 Lập trình hướng đối tượng</title>
 </head>
 <body>
@@ -16,130 +23,51 @@
     let listEmployees = [];
 
     class Employee {
-        constructor() {
-            this.name = '';
-            this.idCard = '';
-            this.dayOfBirth = '';
-            this.email = '';
-            this.office = '';
+        constructor(name, id, birth, email, office) {
+            this.name = name;
+            this.idCard = id;
+            this.dayOfBirth = birth;
+            this.email = email;
+            this.office = office;
         }
 
-        setName() {
-            let nameEdit = "";
-            let name;
-            name = prompt('Họ và tên :');
-            name = name.trim().toLowerCase();
-            for (let i = 0; i < name.length; i++) {
-                if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
-                    continue;
-                }
-                if (i === 0 || name.charAt(i - 1) === " ") {
-                    nameEdit += name.charAt(i).toUpperCase();
-                    continue
-                }
-                nameEdit += name.charAt(i);
-            }
-            this.name = nameEdit;
-            return this.name;
+        setName(name) {
+            this.name = name
         }
 
         getName() {
-            alert(this.name);
+            return this.name;
         }
 
-        setIdCard() {
-            do {
-                this.idCard = prompt('Số CMND:');
-                if (!isNaN(this.idCard)) {
-                    this.idCard = Number.parseFloat(this.idCard);
-                }
-                if (!Number.isInteger(this.idCard)) {
-                    alert('ID card is invalid !!! please try again.');
-                    continue;
-                }
-                if (this.idCard < 100000000 || this.idCard > 999999999) {
-                    alert('ID card is invalid !!! please try again.');
-                    continue;
-                }
-                check = true;
-            } while (!check);
-            check = false;
-            return this.idCard;
+        setIdCard(id) {
+            this.idCard = id;
         }
 
         getIdCard() {
-            alert(this.idCard);
+            return this.idCard;
         }
 
-        setDayOfBirth() {
-            do {
-                this.dayOfBirth = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
-                if (this.dayOfBirth.charAt(2) === '/' && this.dayOfBirth.charAt(5) === '/') {
-                    let day = this.dayOfBirth.substring(0, 2);
-                    let month = this.dayOfBirth.substring(3, 5);
-                    let year = this.dayOfBirth.substring(6, 10);
-                    if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
-                        day = Number.parseFloat(day);
-                        month = Number.parseFloat(month);
-                        year = Number.parseFloat(year);
-                        if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
-                            if (day < 32 && month < 13 && year > 1950) {
-                                check = true;
-                            }
-                        }
-                    }
-                }
-                if (!check) {
-                    alert('Date of birth is invalid !!! please try again.');
-                }
-            } while (!check);
-            check = false;
-            return this.dayOfBirth;
+        setDayOfBirth(birth) {
+            this.dayOfBirth = birth;
         }
 
         getDayOfBirth() {
-            alert(this.dayOfBirth);
+            return this.dayOfBirth;
         }
 
-        setEmail() {
-            do {
-                let countAt = 0;
-                let countDoc = 0;
-                this.email = prompt('Email:');
-                for (let i = 0; i < this.email.length; i++) {
-                    if (this.email.charAt(i) === '@') {
-                        countAt++;
-                        for (let j = i + 1; j < this.email.length; j++) {
-                            if (this.email.charAt(j) === '.') {
-                                countDoc++;
-                            }
-                        }
-                    }
-                }
-                if (countDoc < 1 || countAt !== 1) {
-                    alert('Email is invalid !!! please try again.')
-                } else {
-                    check = true;
-                }
-            } while (!check);
-            check = false;
-            return this.email;
+        setEmail(email) {
+            this.email = email
         }
 
         getEmail() {
-            alert(this.email);
+            return this.email;
         }
 
-        setOffice() {
-            do {
-                this.office = prompt('Chức vụ (Manager, Sale, Marketing):');
-                if (this.office === 'Manager' || this.office === 'Sale' || this.office === 'Marketing') {
-                    check = true;
-                } else {
-                    alert('Office is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
+        setOffice(office) {
+            this.office = office;
+        }
+
+        getOffice(office) {
             return this.office;
         }
 
@@ -158,20 +86,100 @@
         }
     }
 
-    function addNewEmployee() {
-        let arrNewEmploy = [];
-        let objEmployee = new Employee();
-        arrNewEmploy.push(objEmployee.setName());
-        arrNewEmploy.push(objEmployee.setDayOfBirth());
-        arrNewEmploy.push(objEmployee.setIdCard());
-        arrNewEmploy.push(objEmployee.setEmail());
-        arrNewEmploy.push(objEmployee.setOffice());
-        arrNewEmploy.push(objEmployee.setSalary());
-        return arrNewEmploy;
+    function addEmployee() {
+        let nameEdit = "";
+        let name = prompt('Họ và tên :');
+        name = name.trim().toLowerCase();
+        for (let i = 0; i < name.length; i++) {
+            if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
+                continue;
+            }
+            if (i === 0 || name.charAt(i - 1) === " ") {
+                nameEdit += name.charAt(i).toUpperCase();
+                continue
+            }
+            nameEdit += name.charAt(i);
+        }
+        name = nameEdit;
+        let id;
+        do {
+            id = prompt('Số CMND:');
+            if (!isNaN(id)) {
+                id = Number.parseFloat(id);
+            }
+            if (!Number.isInteger(id)) {
+                alert('ID card is invalid !!! please try again.');
+                continue;
+            }
+            if (id < 100000000 || id > 999999999) {
+                alert('ID card is invalid !!! please try again.');
+                continue;
+            }
+            check = true;
+        } while (!check);
+        check = false;
+        let birth;
+        do {
+            birth = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
+            if (birth.charAt(2) === '/' && birth.charAt(5) === '/') {
+                let day = birth.substring(0, 2);
+                let month = birth.substring(3, 5);
+                let year = birth.substring(6, 10);
+                if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                    day = Number.parseFloat(day);
+                    month = Number.parseFloat(month);
+                    year = Number.parseFloat(year);
+                    if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
+                        if (day < 32 && month < 13 && year > 1950) {
+                            check = true;
+                        }
+                    }
+                }
+            }
+            if (!check) {
+                alert('Date of birth is invalid !!! please try again.');
+            }
+        } while (!check);
+        check = false;
+        let email;
+        do {
+            let countAt = 0;
+            let countDoc = 0;
+            email = prompt('Email:');
+            for (let i = 0; i < email.length; i++) {
+                if (email.charAt(i) === '@') {
+                    countAt++;
+                    for (let j = i + 1; j < email.length; j++) {
+                        if (email.charAt(j) === '.') {
+                            countDoc++;
+                        }
+                    }
+                }
+            }
+            if (countDoc < 1 || countAt !== 1) {
+                alert('Email is invalid !!! please try again.')
+            } else {
+                check = true;
+            }
+        } while (!check);
+        check = false;
+        let office;
+        do {
+            office = prompt('Chức vụ (Manager, Sale, Marketing):');
+            if (office === 'Manager' || office === 'Sale' || office === 'Marketing') {
+                check = true;
+            } else {
+                alert('Office is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let objEmployee = new Employee(name, id, birth, email, office);
+        listEmployees.push(objEmployee);
+        tableAddEmploy();
     }
 
     function tableAddEmploy() {
-        let tableString ='<h2>Danh sách nhân viên:</h2>\n'+ '<table>\n' +
+        let tableString = '<h2>Danh sách nhân viên:</h2>\n' + '<table>\n' +
             '    <tr>\n' +
             '        <th>STT</th>\n' +
             '        <th>Full name</th>\n' +
@@ -180,8 +188,8 @@
         for (let i = 0; i < listEmployees.length; i++) {
             tableString = tableString + '<tr>\n' +
                 '        <td>' + (i + 1) + '</td>\n' +
-                '        <td>' + listEmployees[i][0] + '</td>\n' +
-                '        <td>' + listEmployees[i][1] + '</td>\n' +
+                '        <td>' + listEmployees[i].getName() + '</td>\n' +
+                '        <td>' + listEmployees[i].getDayOfBirth() + '</td>\n' +
                 '<td><input type="button" value="Display Information Employee" onclick="displayEmployee(' + i + ')"></td>\n' +
                 '<td><input type="button" value="Salary of Employeesr " onclick="salary(' + i + ')"></td>\n' +
                 '    </tr>'
@@ -190,10 +198,6 @@
         document.getElementById('nhanVien').innerHTML = tableString;
     }
 
-    function addEmployee() {
-        listEmployees.push(addNewEmployee());
-        tableAddEmploy();
-    }
     function displayEmployee(i) {
         let tableShow = '<h2>Thông tin nhân viên:</h2>\n' + '<table border="1">\n' +
             '    <tr>\n' +
@@ -204,15 +208,16 @@
             '        <th>Office</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listEmployees[i][0] + '</td>\n' +
-            '        <td>' + listEmployees[i][1] + '</td>\n' +
-            '        <td>' + listEmployees[i][2] + '</td>\n' +
-            '        <td>' + listEmployees[i][3] + '</td>\n' +
-            '        <td>' + listEmployees[i][4] + '</td>\n' +
+            '        <td>' + listEmployees[i].getName() + '</td>\n' +
+            '        <td>' + listEmployees[i].getDayOfBirth() + '</td>\n' +
+            '        <td>' + listEmployees[i].getIdCard() + '</td>\n' +
+            '        <td>' + listEmployees[i].getEmail() + '</td>\n' +
+            '        <td>' + listEmployees[i].getOffice() + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
     }
+
     function salary(i) {
         let tableShow = '<h2>Thông tin nhân viên và lương:</h2>\n' + '<table border="1">\n' +
             '    <tr>\n' +
@@ -224,226 +229,100 @@
             '        <th>Salary</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listEmployees[i][0] + '</td>\n' +
-            '        <td>' + listEmployees[i][1] + '</td>\n' +
-            '        <td>' + listEmployees[i][2] + '</td>\n' +
-            '        <td>' + listEmployees[i][3] + '</td>\n' +
-            '        <td>' + listEmployees[i][4] + '</td>\n' +
-            '        <td>' + listEmployees[i][5] + '</td>\n' +
+            '        <td>' + listEmployees[i].getName() + '</td>\n' +
+            '        <td>' + listEmployees[i].getDayOfBirth() + '</td>\n' +
+            '        <td>' + listEmployees[i].getIdCard() + '</td>\n' +
+            '        <td>' + listEmployees[i].getEmail() + '</td>\n' +
+            '        <td>' + listEmployees[i].getOffice() + '</td>\n' +
+            '        <td>' + listEmployees[i].setSalary() + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
     }
+
     class Customer {
-        constructor() {
-            this.name = '';
-            this.idCard = '';
-            this.dayOfBirth = '';
-            this.email = '';
-            this.renDays = '';
-            this.accompanying = '';
-            this.typeOfCustomer = '';
-            this.typeOfService = '';
-            this.typeOfRoom = '';
+        constructor(name, id, birth, email, renDay, accom, typeCus, typeSer, typeRoom) {
+            this.name = name;
+            this.idCard = id;
+            this.dayOfBirth = birth;
+            this.email = email;
+            this.renDays = renDay;
+            this.accompanying = accom;
+            this.typeOfCustomer = typeCus;
+            this.typeOfService = typeSer;
+            this.typeOfRoom = typeRoom;
         }
 
-        setName() {
-            let nameEdit = "";
-            let name;
-            name = prompt('Họ và tên :');
-            name = name.trim().toLowerCase();
-            for (let i = 0; i < name.length; i++) {
-                if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
-                    continue;
-                }
-                if (i === 0 || name.charAt(i - 1) === " ") {
-                    nameEdit += name.charAt(i).toUpperCase();
-                    continue
-                }
-                nameEdit += name.charAt(i);
-            }
-            this.name = nameEdit;
-            return this.name;
+        setName(name) {
+            this.name = name;
         }
 
         getName() {
-            alert(this.name);
+            return this.name;
         }
 
-        setIdCard() {
-            do {
-                this.idCard = prompt('Số CMND:');
-                if (!isNaN(this.idCard)) {
-                    this.idCard = Number.parseFloat(this.idCard);
-                }
-                if (!Number.isInteger(this.idCard)) {
-                    alert('ID card is invalid !!! please try again.');
-                    continue;
-                }
-                if (this.idCard < 100000000 || this.idCard > 999999999) {
-                    alert('ID card is invalid !!! please try again.');
-                    continue;
-                }
-                check = true;
-            } while (!check);
-            check = false;
-            return this.idCard;
+        setIdCard(id) {
+            this.idCard = id;
         }
 
         getIdCard() {
-            alert(this.idCard);
+            return this.idCard;
         }
 
-        setDayOfBirth() {
-            do {
-                this.dayOfBirth = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
-                if (this.dayOfBirth.charAt(2) === '/' && this.dayOfBirth.charAt(5) === '/') {
-                    let day = this.dayOfBirth.substring(0, 2);
-                    let month = this.dayOfBirth.substring(3, 5);
-                    let year = this.dayOfBirth.substring(6, 10);
-                    if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
-                        day = Number.parseFloat(day);
-                        month = Number.parseFloat(month);
-                        year = Number.parseFloat(year);
-                        if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
-                            if (day < 32 && month < 13 && year > 1950) {
-                                check = true;
-                            }
-                        }
-                    }
-                }
-                if (!check) {
-                    alert('Date of birth is invalid !!! please try again.');
-                }
-            } while (!check);
-            check = false;
-            return this.dayOfBirth;
+        setDayOfBirth(birth) {
+            this.dayOfBirth = birth;
         }
 
         getDayOfBirth() {
-            alert(this.dayOfBirth);
+            return this.dayOfBirth;
         }
 
-        setEmail() {
-            do {
-                let countAt = 0;
-                let countDoc = 0;
-                this.email = prompt('Email:');
-                for (let i = 0; i < this.email.length; i++) {
-                    if (this.email.charAt(i) === '@') {
-                        countAt++;
-                        for (let j = i + 1; j < this.email.length; j++) {
-                            if (this.email.charAt(j) === '.') {
-                                countDoc++;
-                            }
-                        }
-                    }
-                }
-                if (countDoc < 1 || countAt !== 1) {
-                    alert('Email is invalid !!! please try again.')
-                } else {
-                    check = true;
-                }
-            } while (!check);
-            check = false;
-            return this.email;
+        setEmail(email) {
+            this.email = email;
         }
 
         getEmail() {
-            alert(this.email);
+            return this.email;
         }
 
-        setRenDays() {
-            do {
-                this.renDays = prompt('Số ngày thuê');
-                if (!isNaN(this.renDays)) {
-                    this.renDays = Number.parseFloat(this.renDays);
-                    if (Number.isInteger(this.renDays) && this.renDays > 0) {
-                        check = true;
-                    }
-                }
-                if (!check) {
-                    alert('Ren Days is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
-            return this.renDays;
+        setRenDays(renDay) {
+            this.renDays = renDay;
         }
 
         getRenDays() {
-            alert(this.renDays);
+            return this.renDays;
         }
 
-        setAccompanying() {
-            do {
-                this.accompanying = prompt('Số lượng đi kèm');
-                if (!isNaN(this.accompanying)) {
-                    this.accompanying = Number.parseFloat(this.accompanying);
-                    if (Number.isInteger(this.accompanying) && this.accompanying > 0) {
-                        check = true;
-                    }
-                }
-                if (!check) {
-                    alert('Accompanying is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
-            return this.accompanying;
+        setAccompanying(accom) {
+            this.accompanying = accom;
         }
 
         getAccompanying() {
-            alert(this.accompanying);
+            return this.accompanying;
         }
 
-        setTypeOfCustomer() {
-            do {
-                this.typeOfCustomer = prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
-                if (this.typeOfCustomer === 'Diamond' || this.typeOfCustomer === 'Platinum' || this.typeOfCustomer === 'Gold' || this.typeOfCustomer === 'Silver' || this.typeOfCustomer === 'Member') {
-                    check = true;
-                } else {
-                    alert('Type of customer is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
-            return this.typeOfCustomer;
+        setTypeOfCustomer(typeCus) {
+            this.typeOfCustomer = typeCus;
         }
 
         getTypeOfCustomer() {
-            alert(this.typeOfCustomer);
+            return this.typeOfCustomer;
         }
 
-        setTypeOfService() {
-            do {
-                this.typeOfService = prompt('loại dịch vụ (Villa, House, Room):');
-                if (this.typeOfService === 'Villa' || this.typeOfService === 'House' || this.typeOfService === 'Room') {
-                    check = true;
-                } else {
-                    alert('Type of service is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
-            return this.typeOfService;
+        setTypeOfService(typeSer) {
+            this.typeOfService = typeSer;
         }
 
         getTypeOfService() {
-            alert(this.typeOfService);
+            return this.typeOfService;
         }
 
-        setTypeOfRoom() {
-            do {
-                this.typeOfRoom = prompt('loại phòng thuê (Vip, Business,  Normal):');
-                if (this.typeOfRoom === 'Vip' || this.typeOfRoom === 'Business' || this.typeOfRoom === 'Normal') {
-                    check = true;
-                } else {
-                    alert('Type of room is invalid !!! please try again.')
-                }
-            } while (!check);
-            check = false;
-            return this.typeOfRoom;
+        setTypeOfRoom(typeRoom) {
+            this.typeOfRoom = typeRoom;
         }
 
         getTypeOfRoom() {
-            alert(this.typeOfRoom);
+            return this.typeOfRoom;
         }
 
         totalPay() {
@@ -461,25 +340,148 @@
         }
     }
 
-    function addCustomer() {
-        let arrNewCustomer = [];
-        let objCustomer = new Customer();
-        arrNewCustomer.push(objCustomer.setName());
-        arrNewCustomer.push(objCustomer.setDayOfBirth());
-        arrNewCustomer.push(objCustomer.setIdCard());
-        arrNewCustomer.push(objCustomer.setEmail());
-
-        arrNewCustomer.push(objCustomer.setRenDays());
-        arrNewCustomer.push(objCustomer.setAccompanying());
-        arrNewCustomer.push(objCustomer.setTypeOfCustomer());
-        arrNewCustomer.push(objCustomer.setTypeOfService());
-        arrNewCustomer.push(objCustomer.setTypeOfRoom());
-        arrNewCustomer.push(objCustomer.totalPay());
-        return arrNewCustomer;
+    function add() {
+        let nameEdit = "";
+        let name = prompt('Họ và tên :');
+        name = name.trim().toLowerCase();
+        for (let i = 0; i < name.length; i++) {
+            if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
+                continue;
+            }
+            if (i === 0 || name.charAt(i - 1) === " ") {
+                nameEdit += name.charAt(i).toUpperCase();
+                continue
+            }
+            nameEdit += name.charAt(i);
+        }
+        name = nameEdit;
+        let id;
+        do {
+            id = prompt('Số CMND:');
+            if (!isNaN(id)) {
+                id = Number.parseFloat(id);
+            }
+            if (!Number.isInteger(id)) {
+                alert('ID card is invalid !!! please try again.');
+                continue;
+            }
+            if (id < 100000000 || id > 999999999) {
+                alert('ID card is invalid !!! please try again.');
+                continue;
+            }
+            check = true;
+        } while (!check);
+        check = false;
+        let birth;
+        do {
+            birth = prompt('Ngày tháng năm sinh (dd/mm/yyyy):');
+            if (birth.charAt(2) === '/' && birth.charAt(5) === '/') {
+                let day = birth.substring(0, 2);
+                let month = birth.substring(3, 5);
+                let year = birth.substring(6, 10);
+                if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                    day = Number.parseFloat(day);
+                    month = Number.parseFloat(month);
+                    year = Number.parseFloat(year);
+                    if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
+                        if (day < 32 && month < 13 && year > 1950) {
+                            check = true;
+                        }
+                    }
+                }
+            }
+            if (!check) {
+                alert('Date of birth is invalid !!! please try again.');
+            }
+        } while (!check);
+        check = false;
+        let email;
+        do {
+            let countAt = 0;
+            let countDoc = 0;
+            email = prompt('Email:');
+            for (let i = 0; i < email.length; i++) {
+                if (email.charAt(i) === '@') {
+                    countAt++;
+                    for (let j = i + 1; j < email.length; j++) {
+                        if (email.charAt(j) === '.') {
+                            countDoc++;
+                        }
+                    }
+                }
+            }
+            if (countDoc < 1 || countAt !== 1) {
+                alert('Email is invalid !!! please try again.')
+            } else {
+                check = true;
+            }
+        } while (!check);
+        check = false;
+        let renDays;
+        do {
+            renDays = prompt('Số ngày thuê');
+            if (!isNaN(renDays)) {
+                renDays = Number.parseFloat(renDays);
+                if (Number.isInteger(renDays) && renDays > 0) {
+                    check = true;
+                }
+            }
+            if (!check) {
+                alert('Ren Days is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let acomm;
+        do {
+            acomm = prompt('Số lượng đi kèm');
+            if (!isNaN(acomm)) {
+                acomm = Number.parseFloat(acomm);
+                if (Number.isInteger(acomm) && acomm > 0) {
+                    check = true;
+                }
+            }
+            if (!check) {
+                alert('Accompanying is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let typeCus;
+        do {
+            typeCus = prompt('Loại thành viên (Diamond, Platinum, Gold, Silver, Member):');
+            if (typeCus === 'Diamond' || typeCus === 'Platinum' || typeCus === 'Gold' || typeCus === 'Silver' || typeCus === 'Member') {
+                check = true;
+            } else {
+                alert('Type of customer is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let typeSer;
+        do {
+            typeSer = prompt('loại dịch vụ (Villa, House, Room):');
+            if (typeSer === 'Villa' || typeSer === 'House' || typeSer === 'Room') {
+                check = true;
+            } else {
+                alert('Type of service is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let typeRoom;
+        do {
+            typeRoom = prompt('loại phòng thuê (Vip, Business,  Normal):');
+            if (typeRoom === 'Vip' || typeRoom === 'Business' || typeRoom === 'Normal') {
+                check = true;
+            } else {
+                alert('Type of room is invalid !!! please try again.')
+            }
+        } while (!check);
+        check = false;
+        let objNewCustomer = new Customer(name, id, birth, email, renDays, acomm, typeCus, typeSer, typeRoom);
+        listCustomer.push(objNewCustomer);
+        tableAdd();
     }
 
     function tableAdd() {
-        let tableString ='<h2>Danh sách khách hàng:</h2>\n'+ '<table>\n' +
+        let tableString = '<h2>Danh sách khách hàng:</h2>\n' + '<table>\n' +
             '    <tr>\n' +
             '        <th>STT</th>\n' +
             '        <th>Full name</th>\n' +
@@ -488,8 +490,8 @@
         for (let i = 0; i < listCustomer.length; i++) {
             tableString = tableString + '<tr>\n' +
                 '        <td>' + (i + 1) + '</td>\n' +
-                '        <td>' + listCustomer[i][0] + '</td>\n' +
-                '        <td>' + listCustomer[i][1] + '</td>\n' +
+                '        <td>' + listCustomer[i].getName() + '</td>\n' +
+                '        <td>' + listCustomer[i].getDayOfBirth() + '</td>\n' +
                 '<td><input type="button" value="Display Information Customer" onclick="displayCustomer(' + i + ')"></td>\n' +
                 '<td><input type="button" value="Edit" onclick="editCustomer(' + i + ')"></td>\n' +
                 '<td><input type="button" value="Delete" onclick="deleteCustomer(' + i + ')"></td>\n' +
@@ -500,10 +502,6 @@
         document.getElementById('table').innerHTML = tableString;
     }
 
-    function add() {
-        listCustomer.push(addCustomer());
-        tableAdd();
-    }
 
     function displayCustomer(i) {
         let tableShow = '<h2>Thông tin khách hàng:</h2>\n' + '<table border="1">\n' +
@@ -519,18 +517,19 @@
             '        <th>Type of room</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listCustomer[i][0] + '</td>\n' +
-            '        <td>' + listCustomer[i][1] + '</td>\n' +
-            '        <td>' + listCustomer[i][2] + '</td>\n' +
-            '        <td>' + listCustomer[i][3] + '</td>\n' +
-            '        <td>' + listCustomer[i][4] + '</td>\n' +
-            '        <td>' + listCustomer[i][5] + '</td>\n' +
-            '        <td>' + listCustomer[i][6] + '</td>\n' +
-            '        <td>' + listCustomer[i][7] + '</td>\n' +
-            '        <td>' + listCustomer[i][8] + '</td>\n' +
+            '        <td>' + listCustomer[i].getName() + '</td>\n' +
+            '        <td>' + listCustomer[i].getDayOfBirth() + '</td>\n' +
+            '        <td>' + listCustomer[i].getIdCard() + '</td>\n' +
+            '        <td>' + listCustomer[i].getEmail() + '</td>\n' +
+            '        <td>' + listCustomer[i].getRenDays() + '</td>\n' +
+            '        <td>' + listCustomer[i].getAccompanying() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfCustomer() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfService() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfRoom() + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
+        console.log(listCustomer);
     }
 
     function editCustomer(i) {
@@ -548,15 +547,15 @@
             '        <th>Type of room</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listCustomer[i][0] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 0 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][1] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 1 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][2] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 2 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][3] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 3 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][4] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 4 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][5] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 5 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][6] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 6 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][7] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 7 + ')">' + '</td>\n' +
-            '        <td>' + listCustomer[i][8] + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 8 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getName() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 0 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getDayOfBirth() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 1 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getIdCard() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 2 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getEmail() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 3 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getRenDays() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 4 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getAccompanying() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 5 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfCustomer() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 6 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfService() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 7 + ')">' + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfRoom() + '<input type="button" value="Edit" onclick="chinhSua(' + i + ',' + j + '=' + 8 + ')">' + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
@@ -580,6 +579,7 @@
                     nameEdit += a.charAt(i);
                 }
                 a = nameEdit;
+                listCustomer[i].setName(a);
                 break;
             case 1:
                 do {
@@ -603,6 +603,7 @@
                         alert('Date of birth is invalid !!! please try again.');
                     }
                 } while (!check);
+                listCustomer[i].setDayOfBirth(a);
                 break;
             case 2:
                 do {
@@ -620,6 +621,7 @@
                     }
                     check = true;
                 } while (!check);
+                listCustomer[i].setIdCard(a);
                 break;
             case 3:
                 do {
@@ -642,6 +644,7 @@
                         check = true;
                     }
                 } while (!check);
+                listCustomer[i].setEmail(a);
                 break;
             case 4:
                 do {
@@ -656,6 +659,7 @@
                         alert('Ren Days is invalid !!! please try again.')
                     }
                 } while (!check);
+                listCustomer[i].setRenDays(a);
                 break;
             case 5:
                 do {
@@ -670,6 +674,7 @@
                         alert('Accompanying is invalid !!! please try again.')
                     }
                 } while (!check);
+                listCustomer[i].setAccompanying(a);
                 break;
             case 6:
                 do {
@@ -680,6 +685,7 @@
                         alert('Type of customer is invalid !!! please try again.')
                     }
                 } while (!check);
+                listCustomer[i].setTypeOfCustomer(a);
                 break;
             case 7:
                 do {
@@ -690,6 +696,7 @@
                         alert('Type of service is invalid !!! please try again.')
                     }
                 } while (!check);
+                listCustomer[i].setTypeOfService(a);
                 break;
             case 8:
                 do {
@@ -700,10 +707,10 @@
                         alert('Type of room is invalid !!! please try again.')
                     }
                 } while (!check);
+                listCustomer[i].setTypeOfRoom(a);
                 break;
         }
         check = false;
-        listCustomer[i].splice(j, 1, a);
         let tableShow = '<h2>Thông tin khách hàng sau khi chỉnh sửa:</h2>\n' + '<table border="1">\n' +
             '    <tr>\n' +
             '        <th>Full name</th>\n' +
@@ -717,18 +724,19 @@
             '        <th>Type of room</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listCustomer[i][0] + '</td>\n' +
-            '        <td>' + listCustomer[i][1] + '</td>\n' +
-            '        <td>' + listCustomer[i][2] + '</td>\n' +
-            '        <td>' + listCustomer[i][3] + '</td>\n' +
-            '        <td>' + listCustomer[i][4] + '</td>\n' +
-            '        <td>' + listCustomer[i][5] + '</td>\n' +
-            '        <td>' + listCustomer[i][6] + '</td>\n' +
-            '        <td>' + listCustomer[i][7] + '</td>\n' +
-            '        <td>' + listCustomer[i][8] + '</td>\n' +
+            '        <td>' + listCustomer[i].getName() + '</td>\n' +
+            '        <td>' + listCustomer[i].getDayOfBirth() + '</td>\n' +
+            '        <td>' + listCustomer[i].getIdCard() + '</td>\n' +
+            '        <td>' + listCustomer[i].getEmail() + '</td>\n' +
+            '        <td>' + listCustomer[i].getRenDays() + '</td>\n' +
+            '        <td>' + listCustomer[i].getAccompanying() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfCustomer() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfService() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfRoom() + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
+        tableAdd();
     }
 
     function deleteCustomer(i) {
@@ -752,20 +760,22 @@
             '        <th>Total pay</th>\n' +
             '    </tr>'
             + '<tr>\n' +
-            '        <td>' + listCustomer[i][0] + '</td>\n' +
-            '        <td>' + listCustomer[i][1] + '</td>\n' +
-            '        <td>' + listCustomer[i][2] + '</td>\n' +
-            '        <td>' + listCustomer[i][3] + '</td>\n' +
-            '        <td>' + listCustomer[i][4] + '</td>\n' +
-            '        <td>' + listCustomer[i][5] + '</td>\n' +
-            '        <td>' + listCustomer[i][6] + '</td>\n' +
-            '        <td>' + listCustomer[i][7] + '</td>\n' +
-            '        <td>' + listCustomer[i][8] + '</td>\n' +
-            '        <td>' + listCustomer[i][9] + '</td>\n' +
+            '        <td>' + listCustomer[i].getName() + '</td>\n' +
+            '        <td>' + listCustomer[i].getDayOfBirth() + '</td>\n' +
+            '        <td>' + listCustomer[i].getIdCard() + '</td>\n' +
+            '        <td>' + listCustomer[i].getEmail() + '</td>\n' +
+            '        <td>' + listCustomer[i].getRenDays() + '</td>\n' +
+            '        <td>' + listCustomer[i].getAccompanying() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfCustomer() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfService() + '</td>\n' +
+            '        <td>' + listCustomer[i].getTypeOfRoom() + '</td>\n' +
+            '        <td>' + listCustomer[i].totalPay() + '</td>\n' +
             '    </tr>'
             + '</table>';
         document.getElementById('show').innerHTML = tableShow;
     }
 </script>
+</body>
+</html>
 </body>
 </html>
