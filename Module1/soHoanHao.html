@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>số hoàn hảo</title>
+</head>
+<body>
+<script>
+    let a = parseInt(prompt('nhap'));
+    //số hoàn hảo
+    // let sum = 0;
+    // for (let i = 1;i<a;i++){
+    //     if (a%i==0){
+    //         sum+=i;
+    //     }
+    // }
+    // if (sum===a){
+    //     alert('shh');
+    // }else {
+    //     alert('nhh');
+    // }
+    //số chính phương
+    let b = Math.sqrt(a);
+    if (a % b === 0) {
+        alert('scp');
+    } else {
+        alert('ncp');
+    }
+</script>
+</body>
+</html>
