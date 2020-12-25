@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new employee</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+<script type="text/javascript" src="action.js"></script>
+<header class="addEmployee">
+    <div class="main">
+        <div class="logo">
+            <img src="logo (1).png" height="auto" width="100px"/>
+        </div>
+
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li class="active"><a href="#">Add new employee</a></li>
+            <li><a href="listEmployee.html" >List employee</a></li>
+            <li><a href="addNewCustomer.html">Add new customer</a></li>
+            <li><a href="listCustomer.html">List customer</a></li>
+        </ul>
+    </div>
+    <div class="titleAddEmployee">
+        <h1>Nhập thông tin của nhân viên :</h1>
+    </div>
+    <div class="formAddEmployee">
+        <form action="listEmployee.html" method="post">
+            <h3>Họ và tên\Full name:</h3>
+            <input type="text" id="name">
+            <h3>CMND\ID card:</h3>
+            <input type="text" id="id">
+            <h3>Ngày sinh\Date of birth:</h3>
+            <input type="text" id="date">
+            <h3>Email:</h3>
+            <input type="text" id="email">
+            <h3>Chức vụ\Office:</h3>
+            <select id="office">
+                <option value="Manager">Manager</option>
+
+                <option value="Sale">Sale</option>
+
+                <option value="Marketing">Marketing</option>
+            </select>
+            <br>
+            <br>
+            <input class="btnReset" type="reset" value="Reset">
+            <br>
+            <br>
+            <button class="btn" onclick="submit()">Submit</button>
+        </form>
+    </div>
+</header>
+</body>
+</html>

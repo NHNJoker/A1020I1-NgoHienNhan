@@ -2,18 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
     <title>#5 Lập trình hướng đối tượng</title>
 </head>
 <body>
-<input type="button" value="Add New Customer" onclick="add()">
-<input type="button" value="Add New Employee" onclick="addEmployee()">
+    <input type="button" value="Add New Customer" onclick="add()">
+    <input type="button" value="Add New Employee" onclick="addEmployee()">
 <p id="nhanVien"></p>
 <p id="table"></p>
 <p id="add"></p>
@@ -120,7 +113,7 @@
 
     function addEmployee() {
         formAddEmployee();
-        document.getElementById('table').innerText='';
+        document.getElementById('table').innerText = '';
     }
 
     function submit() {
@@ -175,7 +168,7 @@
             let objEmployee = new Employee(name, id, birth, email, office);
             listEmployees.push(objEmployee);
             tableAddEmploy();
-            if (countCus>0){
+            if (countCus > 0) {
                 tableAdd();
             }
             document.getElementById('add').innerText = '';
@@ -383,8 +376,8 @@
 
     function add() {
         formAddCuss();
-        document.getElementById('nhanVien').innerText ='';
-        document.getElementById('table').innerText='';
+        document.getElementById('nhanVien').innerText = '';
+        document.getElementById('table').innerText = '';
     }
 
     function submitCus() {
@@ -455,7 +448,7 @@
             listCustomer.push(objNewCustomer);
             document.getElementById('add').innerText = '';
             tableAdd();
-            if (countNv>0){
+            if (countNv > 0) {
                 tableAddEmploy();
             }
 
@@ -665,7 +658,5 @@
         document.getElementById('show').innerHTML = totalPay;
     }
 </script>
-</body>
-</html>
 </body>
 </html>
